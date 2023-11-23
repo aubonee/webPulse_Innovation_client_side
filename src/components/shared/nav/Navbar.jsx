@@ -5,8 +5,8 @@ import { FaShoppingCart } from "react-icons/fa";
 const Navbar = () => {
     const navItems = <>
     <li><NavLink to="/" className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "active" : ""}> Home</NavLink></li>
-    <li><NavLink to="/menu" className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "active" : ""}> Menu</NavLink></li>
-    <li><NavLink to="/ourshop/salad" className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "active" : ""}> Our Shop</NavLink></li>
+    <li><NavLink to="/contactus" className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "active" : ""}> Contact us</NavLink></li>
+    <li><NavLink to="/login" className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "active" : ""}> Login</NavLink></li>
     {/* <li><NavLink to="/login" className={({ isActive, isPending }) =>  isPending ? "pending" : isActive ? "active" : ""}> Login</NavLink></li> */}
    
 
@@ -22,7 +22,7 @@ const Navbar = () => {
             {navItems}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">daisyUI</a>
+          <a className="py-2 text-white bg-[#db23c0] px-2 text-xl">webPulse Innovation</a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
@@ -39,13 +39,7 @@ const Navbar = () => {
         </div>
       </label>
       <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
-        <li>
-          <a className="justify-between">
-            Profile
-            <span className="badge">New</span>
-          </a>
-        </li>
-        <li><a>Settings</a></li>
+     
         <li><a>Logout</a></li>
       </ul>
     </div> 

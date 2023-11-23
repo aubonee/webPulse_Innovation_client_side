@@ -2,7 +2,7 @@ import React from 'react';
 
 const ErrorPage = () => {
     return (
-        <div>
+        <div className='mx-auto max-w-screen-xl'>
             Error Page
         </div>
     );

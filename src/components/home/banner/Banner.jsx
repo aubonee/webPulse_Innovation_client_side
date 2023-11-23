@@ -8,28 +8,30 @@ import img4 from '../../../assets/banner/4.png'
 
 const Banner = () => {
     return (
-        <Carousel  className="text-center" autoPlay>
+       <div className="w-full">
+         <Carousel  className="text-center" autoPlay>
         
         <div>
-            <img src={img1} />
+            <img className="w-full" src={img1} />
            
         </div>
         <div>
-            <img src={img2} />
+            <img className="w-full" src={img2} />
            
         </div>
         <div>
-            <img src={img3} />
+            <img className="w-full" src={img3} />
            
         </div>
         <div>
-            <img src={img4} />
+            <img className="w-full" src={img4} />
            
         </div>
        
         
 
     </Carousel>
+       </div>
     );
 };
 
