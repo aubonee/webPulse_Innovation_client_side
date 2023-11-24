@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { FaShoppingCart } from "react-icons/fa";
+
+import { AuthContext } from '../../../providers/AuthProvider';
 
 const Navbar = () => {
+  const {user, logOut} = useContext(AuthContext);
     const navItems = <>
     <li><NavLink to="/" className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "active" : ""}> Home</NavLink></li>
     <li><NavLink to="/contactus" className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "active" : ""}> Contact us</NavLink></li>
@@ -35,7 +37,16 @@ const Navbar = () => {
         <div className="dropdown dropdown-end">
       <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
         <div className="w-10 rounded-full">
-          <img alt="Tailwind CSS Navbar component" src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+        <div className="flex ">
+      {
+        user && <div className="flex  items-center"> <div><img className=" w-[30px] h-[30px] rounded-full" src={user.photoURL} alt="" /></div> <h2>{user.displayName}</h2> </div> 
+      }
+    </div>
+    {
+      user && 
+      <img alt="Tailwind CSS Navbar component" src={user.photoURL} />
+    }
+          
         </div>
       </label>
       <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
