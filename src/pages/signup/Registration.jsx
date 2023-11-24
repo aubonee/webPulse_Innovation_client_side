@@ -40,7 +40,9 @@ const Registration = () => {
                             name: data.name,
                             email: data.email,
                             role: data.role,
-                            image: res.data.data.display_url
+                            image: res.data.data.display_url,
+                            bank_account_no:data.bank_account_no,
+                            salary:data.salary
                         }
                         axiosPublic.post('/users', userInfo)
                             .then(res => {
@@ -177,6 +179,15 @@ const Registration = () => {
                                 <input type="text"  {...register("bank_account_no", { required: true })} name="bank_account_no" placeholder="bank_account_no" className="input input-bordered" />
                                 {errors.bank_account_no && <span className="text-red-600">bank account no. is required</span>}
                             </div>
+                            {/* salary */}
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">salary</span>
+                                </label>
+                                <input type="number"  {...register("salary", { required: true })} name="salary" placeholder="Salary" className="input input-bordered" />
+                                {errors.salary && <span className="text-red-600">bank account no. is required</span>}
+                            </div>
+                            {/* image */}
                             <div className="form-control w-full my-6">
                                 <input {...register('image', { required: true })} type="file" className="file-input w-full max-w-xs" />
                             </div>
@@ -184,7 +195,7 @@ const Registration = () => {
                                 <input className="btn btn-primary" type="submit" value="Sign Up" />
                             </div>
                         </form>
-                        <p className="px-6"><small>Already have an account <Link to="/login">Login</Link></small></p>
+                        <p className="px-6"><small>Already have an account <Link to="/login" className='text-blue-600'>Login</Link></small></p>
 
                     </div>
                 </div>

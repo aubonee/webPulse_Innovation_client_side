@@ -10,6 +10,8 @@ import Login from "../pages/login/Login";
 import Registration from "../pages/signup/Registration";
 import Dashboard from "../layout/dashboard/Dashboard";
 import AllEmployee from "../pages/dashboard/admin/AllEmployee";
+import EmployeeDetail from "../pages/dashboard/hr/employeeDetail";
+import WorkSheet from "../pages/dashboard/employee/WorkSheet";
 
   export const router = createBrowserRouter([
     {
@@ -48,6 +50,16 @@ import AllEmployee from "../pages/dashboard/admin/AllEmployee";
             {
                 path: "allemployee",
                 element: <AllEmployee></AllEmployee>
+            },
+            {
+                path: "worksheet",
+                element: <WorkSheet></WorkSheet>
+            },
+            {
+                path: 'employeeDetail/:id',
+                element: <EmployeeDetail></EmployeeDetail>,
+                loader: ({params}) => fetch(`http://localhost:5000/employeeDetail/${params.id}`)
+      
             }
         ]
     }
