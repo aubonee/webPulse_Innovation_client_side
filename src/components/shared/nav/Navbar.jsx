@@ -5,10 +5,20 @@ import { AuthContext } from '../../../providers/AuthProvider';
 
 const Navbar = () => {
   const {user, logOut} = useContext(AuthContext);
+
+  const handleSignOut =() =>{
+    logOut()
+    .then()
+    .catch()
+  }
     const navItems = <>
     <li><NavLink to="/" className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "active" : ""}> Home</NavLink></li>
     <li><NavLink to="/contactus" className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "active" : ""}> Contact us</NavLink></li>
-    <li><NavLink to="/login" className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "active" : ""}> Login</NavLink></li>
+    <li>    {   user ?
+   " "
+  :
+  <Link className=" " to="/login">Login</Link>
+  }</li>
     {/* <li><NavLink to="/login" className={({ isActive, isPending }) =>  isPending ? "pending" : isActive ? "active" : ""}> Login</NavLink></li> */}
    
 
@@ -34,13 +44,20 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-        <div className="dropdown dropdown-end">
+      <div>
+        <div>
+     
+        </div>
+        <div> {
+        user && <div className="flex  items-center"> <div><img className=" w-[30px]  h-[30px] rounded-full" src={user.photoURL} alt="" /></div> <h2 className='text-red-500'>{user.displayName}</h2> </div> 
+      }</div>
+      </div>
+      <div>
+      <div className="dropdown dropdown-end">
       <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
         <div className="w-10 rounded-full">
         <div className="flex ">
-      {
-        user && <div className="flex  items-center"> <div><img className=" w-[30px] h-[30px] rounded-full" src={user.photoURL} alt="" /></div> <h2>{user.displayName}</h2> </div> 
-      }
+      
     </div>
     {
       user && 
@@ -51,9 +68,14 @@ const Navbar = () => {
       </label>
       <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
      
-        <li><a>Logout</a></li>
+      {
+    user && 
+    <button onClick={handleSignOut} className="text-sm  my-2 mx-2 btn rounded-none bg-[#FF6969]  border-2 border-spacing-y-3 border-spacing-x-7 text-[#FFFFFA] border-[#FF6969]">Sign Out</button>
+  
+  }
       </ul>
     </div> 
+      </div>
         </div>
       </div>
 

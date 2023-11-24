@@ -1,9 +1,9 @@
-import  { useContext, useState } from 'react';
+import  { useContext} from 'react';
 import useAxiosPublic from '../../hooks/UseAxiosPublic';
 import { AuthContext } from '../../providers/AuthProvider';
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import regimg  from '../../assets/reg.jpg'
 
@@ -13,7 +13,7 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_ke
 const Registration = () => {
     const axiosPublic = useAxiosPublic();
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
-    const { createUser, updateUser } = useContext(AuthContext);
+    const { createUser, updateUserProfile ,setUser} = useContext(AuthContext);
     const navigate = useNavigate();
 
     const onSubmit = async (data) => {
@@ -25,17 +25,28 @@ const Registration = () => {
             }
         });
         createUser(data.email, data.password)
-        
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Registration  Succesful',
-                    showConfirmButton: false,
-                    timer: 1500
-                  })
-                  navigate('/');
+                
+                updateUserProfile(data.name, data.imageFile)
+                .then(()=>{
+                    setUser((prev)=>
+                    {
+                              const updatedUserProfile={...prev, displayName:data.name, photoURL:res.data.data.display_url}
+                              return updatedUserProfile;
+                    })
+                       console.log('user profilr info updated')
+                       reset();
+                       Swal.fire({
+                        icon: 'success',
+                        title: 'Registration  Succesful',
+                        showConfirmButton: false,
+                        timer: 1500
+                      })
+                      navigate('/');
+                    }).catch(error=>console.log(error))
+            
                 
                 // updateUser(data.name, data.imageFile)
                 //     .then(() => {
@@ -72,13 +83,13 @@ const Registration = () => {
     return (
         <>
             <Helmet>
-                <title>Bistro Boss | Sign Up</title>
+                <title>WebPulse | Sign Up</title>
             </Helmet>
             <div className="hero min-h-screen  bg-base-100 shadow-2xl">
                 <div className="hero-content flex-col lg:flex-row-reverse">
-                    <div className="text-center  w-1/2 lg:text-left">
+                    <div className="text-center  w-full lg:w-1/2 lg:text-left">
                        <img className=' bg-base-100 w-96' src={regimg} alt="" />  </div>
-                    <div className="w-1/2 p-6  bg-base-100">
+                    <div className="w-full lg:w-1/2 p-6  bg-base-100">
                         <form onSubmit={handleSubmit(onSubmit)} >
                             <div className="form-control">
                                 <label className="label">

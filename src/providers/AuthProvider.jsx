@@ -20,8 +20,7 @@ const AuthProvider = ({children}) => {
         setLoading(true)
         return createUserWithEmailAndPassword(auth,email,password)
     }
-    const updateUser=(displayName,photoURL)=>{
-        console.log(displayName);
+    const updateUserProfile=(displayName,photoURL)=>{
         return updateProfile(auth.currentUser,{displayName,photoURL})
         
 
@@ -91,7 +90,7 @@ const AuthProvider = ({children}) => {
         googleSignIn,
         signIn,
         logOut,
-        updateUser,
+        updateUserProfile,
         setUser
 
     }
