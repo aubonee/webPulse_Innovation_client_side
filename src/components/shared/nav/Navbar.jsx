@@ -49,7 +49,7 @@ const Navbar = () => {
      
         </div>
         <div> {
-        user && <div className="flex  items-center"> <div><img className=" w-[30px]  h-[30px] rounded-full" src={user.photoURL} alt="" /></div> <h2 className='text-red-500'>{user.displayName}</h2> </div> 
+        user && <h2 className='text-red-500'>{user.displayName}</h2> 
       }</div>
       </div>
       <div>

@@ -8,6 +8,8 @@ import Home from "../pages/home/Home";
 import ContactUs from "../pages/contactUs/ContactUs";
 import Login from "../pages/login/Login";
 import Registration from "../pages/signup/Registration";
+import Dashboard from "../layout/dashboard/Dashboard";
+import AllEmployee from "../pages/dashboard/admin/AllEmployee";
 
   export const router = createBrowserRouter([
     {
@@ -33,6 +35,20 @@ import Registration from "../pages/signup/Registration";
             element: <Registration></Registration>
           }
 
+        ]
+    },
+    {
+        path: "/dashboard",
+        element: <Dashboard></Dashboard>,
+        children:[
+            {
+                path: " ",
+                element: <AllEmployee></AllEmployee>
+            },
+            {
+                path: "allemployee",
+                element: <AllEmployee></AllEmployee>
+            }
         ]
     }
 ]);
