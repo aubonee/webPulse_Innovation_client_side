@@ -5,14 +5,14 @@ import { GoogleAuthProvider, getAuth,
        onAuthStateChanged, 
       signInWithEmailAndPassword, signInWithPopup, signOut,updateProfile } from 'firebase/auth';
 import app from '../firebase/firebase.config';
-// import useAxiosPublic from '../hooks/useAxiosPublic';
+
 
 export const AuthContext = createContext(null);
 
 // eslint-disable-next-line react/prop-types
 const AuthProvider = ({children}) => {
-    const auth =getAuth(app)
-   // const axiosPublic = useAxiosPublic();
+    const auth = getAuth(app)
+   
     const [user,setUser] =useState(null);
     const [loading,setLoading] =useState(true);
 
