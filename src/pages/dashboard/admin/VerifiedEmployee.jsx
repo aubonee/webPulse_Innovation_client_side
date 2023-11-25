@@ -34,6 +34,36 @@ const VerifiedEmployee = () => {
         })
     }
 
+    const handleDeleteUser= employee =>{
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+          }).then((result) => {
+            if (result.isConfirmed) {
+           
+            axiosSecure.delete(`/users/${employee._id}`)
+            .then(res=>{
+                console.log(res.data);
+                if(res.data.deletedCount > 0){
+                    refetch()
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: "Your file has been deleted.",
+                        icon: "success"
+                      });
+
+                }
+            })
+            }
+          });
+    }
+
 
     
     return (
@@ -61,7 +91,7 @@ const VerifiedEmployee = () => {
             <td> {employee.name}</td>
             <td> {employee.designation}</td>
             <td> <button onClick={() => handleMakeHr(employee)} className='btn text-white bg-purple-500'>Make HR</button></td>
-            <td><button  className='btn text-white bg-purple-500'>Fire</button></td>
+            <td><button  onClick={() => handleDeleteUser(employee)} className='btn text-white bg-purple-500'>Fire</button></td>
         </tr>
         )
      } 
