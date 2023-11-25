@@ -1,11 +1,12 @@
 import React from 'react';
 import useAxiosSecure from '../../../hooks/UseAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
+import Swal from 'sweetalert2';
 
 const VerifiedEmployee = () => {
     const axiosSecure =useAxiosSecure();
   
-    const { data:users=[] , }=useQuery({
+    const { data:users=[] , refetch}=useQuery({
         //refetch
         queryKey:['users'],
         queryFn:async ()=>{
@@ -15,8 +16,26 @@ const VerifiedEmployee = () => {
         }
     })
 
-
     const employees= users.filter(user=> user.role==='employee' && user.isVerified==='verified' );
+    const handleMakeHr=employee=>{
+        axiosSecure.patch(`/users/hr/${employee._id}`)
+        .then(res =>{
+            console.log(res.data)
+            if(res.data.modifiedCount > 0){
+                refetch();
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: `${employee.name} is HR Now!`,
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+            }
+        })
+    }
+
+
+    
     return (
         <div>
             
@@ -41,8 +60,8 @@ const VerifiedEmployee = () => {
             <td> {index+1} </td>
             <td> {employee.name}</td>
             <td> {employee.designation}</td>
-            <td> <button className='btn text-white bg-purple-500'>Make HR</button></td>
-            <td><button className='btn text-white bg-purple-500'>Fire</button></td>
+            <td> <button onClick={() => handleMakeHr(employee)} className='btn text-white bg-purple-500'>Make HR</button></td>
+            <td><button  className='btn text-white bg-purple-500'>Fire</button></td>
         </tr>
         )
      } 
