@@ -13,6 +13,7 @@ import Dashboard from "../layout/dashboard/Dashboard";
 import EmployeeDetail from "../pages/dashboard/hr/employeeDetail";
 import WorkSheet from "../pages/dashboard/employee/WorkSheet";
 import AllEmployee from "../pages/dashboard/hr/AllEmployee";
+import VerifiedEmployee from "../pages/dashboard/admin/VerifiedEmployee";
 
   export const router = createBrowserRouter([
     {
@@ -55,6 +56,10 @@ import AllEmployee from "../pages/dashboard/hr/AllEmployee";
             {
                 path: "worksheet",
                 element: <WorkSheet></WorkSheet>
+            },
+            {
+                path: "verifiedemployee",
+                element: <VerifiedEmployee></VerifiedEmployee>
             },
             {
                 path: 'employeeDetail/:id',

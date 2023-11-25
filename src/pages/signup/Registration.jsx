@@ -43,7 +43,8 @@ const Registration = () => {
                             role: data.role,
                             image: res.data.data.display_url,
                             bank_account_no:data.bank_account_no,
-                            salary:data.salary
+                            salary:data.salary,
+                            designation:data.designation
                         }
                         axiosPublic.post('/users', userInfo)
                             .then(res => {
