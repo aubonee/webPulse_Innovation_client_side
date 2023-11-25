@@ -14,6 +14,7 @@ const AllEmployee = () => {
 
         }
     })
+    const employees= users.filter(user=> user.role==='employee');
     return (
         <div>
              <div className='flex justify-evenly my-4 text-center'>
@@ -34,6 +35,7 @@ const AllEmployee = () => {
         <th>Verified</th>
         <th>Bank Account</th>
         <th>Salary</th>
+        <th>Role</th>
         <th>Action</th>
         <th>Action</th>
 
@@ -42,16 +44,17 @@ const AllEmployee = () => {
     <tbody>
       {/* row 1 */}
     {
-        users.map((user,index)=>
-        <tr key={user._id}>
+        employees.map((employee,index)=>
+        <tr key={employee._id}>
             <th> {index+1} </th>
-            <td> {user.name}</td>
-            <td> {user.email}</td>
-            <td><button className='btn text-white bg-purple-500'>Not Verified</button></td>
-            <td> {user.bank_account_no}</td>
-            <td>{user.salary}</td>
+            <td> {employee.name}</td>
+            <td> {employee.email}</td>
+            <td><button className='btn text-white bg-purple-500'>Make Verified</button></td>
+            <td> {employee.bank_account_no}</td>
+            <td>{employee.salary}</td>
+            <td>{employee.role}</td>
             <td> <button className='btn text-white bg-purple-500'>Pay</button></td>
-            <td> <Link to={`/dashboard/employeeDetail/${user._id}`}  className='btn text-white bg-purple-500'>Details</Link></td>
+            <td> <Link to={`/dashboard/employeeDetail/${employee._id}`}  className='btn text-white bg-purple-500'>Details</Link></td>
         </tr>
         )
      } 
