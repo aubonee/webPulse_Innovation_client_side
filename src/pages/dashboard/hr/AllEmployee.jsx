@@ -2,13 +2,14 @@ import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import useAxiosSecure from '../../../hooks/UseAxiosSecure';
 import { Link } from 'react-router-dom';
-import { FaCheckCircle, FaUsers } from 'react-icons/fa';
+import { FaCheck  } from 'react-icons/fa';
+import { ImCross } from "react-icons/im";
 import Swal from 'sweetalert2';
-import useAxiosPublic from '../../../hooks/UseAxiosPublic';
+
 
 const AllEmployee = () => {
     const axiosSecure =useAxiosSecure();
-    const axiosPublic =useAxiosPublic();
+  
     const { data:users=[] , refetch}=useQuery({
         //refetch
         queryKey:['users'],
@@ -54,6 +55,38 @@ const AllEmployee = () => {
         });
 
   }
+  const handleMakeUnVerified= employee =>{
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You want to make this Employee Verified!",
+        icon: "success",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, update it"
+      }).then((result) => {
+        if (result.isConfirmed) {
+       
+        axiosSecure.patch(`users/unverified/${employee._id}`)
+        .then(res=>{
+            console.log(res.data);
+            if(res.data.modifiedCount > 0){
+                refetch()
+                Swal.fire({
+                    title: "Done!",
+                    text: "this user is Unverified now.",
+                    icon: "success"
+                  });
+
+            }
+        })
+        }
+      })  .catch(error => {
+        // Handle error, show user a message, etc.
+        console.error('Error updating user verification:', error);
+      });
+
+}
     return (
         <div>
              <div className='flex justify-evenly my-4 text-center'>
@@ -71,7 +104,7 @@ const AllEmployee = () => {
         </th>
         <th> Name</th>
         <th> Email</th>
-        <th>Verified</th>
+        <th>Verified Status</th>
         <th>Bank Account</th>
         <th>Salary</th>
         <th>Role</th>
@@ -90,7 +123,7 @@ const AllEmployee = () => {
             <td> {employee.email}</td>
             {/* <td><button className='btn text-white bg-purple-500'>Make Verified</button></td> */}
             <td>
-              {employee.isVerified == 'verified'? 'Verified': <button onClick={()=>handleMakeVerified(employee)}  className="btn  p-3 py-1 my-2 text-white text-lg bg-green-700">Make Verified </button>}
+              {employee.isVerified == 'verified'? <button onClick={()=>handleMakeUnVerified(employee)}  className="btn  p-3 py-1 my-2 text-red-500 text-lg "> <ImCross /> </button> : <button onClick={()=>handleMakeVerified(employee)}  className="btn  p-3 py-1 my-2  text-lg text-green-700"><FaCheck/></button>}
                
               </td>
             <td> {employee.bank_account_no}</td>
