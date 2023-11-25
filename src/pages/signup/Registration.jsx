@@ -29,9 +29,10 @@ const Registration = () => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
 
-                updateUserProfile(data.name, data.imageFile)
+                updateUserProfile(data.name, res.data.data.display_url)
                     .then(() => {
                         setUser((prev) => {
+                            console.log('photo Url:',res.data.data.display_url);
                             const updatedUserProfile = { ...prev, displayName: data.name, photoURL: res.data.data.display_url }
                             return updatedUserProfile;
                         })

@@ -2,10 +2,14 @@ import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import useAxiosSecure from '../../../hooks/UseAxiosSecure';
 import { Link } from 'react-router-dom';
+import { FaCheckCircle, FaUsers } from 'react-icons/fa';
+import Swal from 'sweetalert2';
+import useAxiosPublic from '../../../hooks/UseAxiosPublic';
 
 const AllEmployee = () => {
     const axiosSecure =useAxiosSecure();
-    const { data:users=[] ,}=useQuery({
+    const axiosPublic =useAxiosPublic();
+    const { data:users=[] , refetch}=useQuery({
         //refetch
         queryKey:['users'],
         queryFn:async ()=>{
@@ -14,7 +18,42 @@ const AllEmployee = () => {
 
         }
     })
+
+
     const employees= users.filter(user=> user.role==='employee');
+
+    const handleMakeVerified= employee =>{
+      Swal.fire({
+          title: "Are you sure?",
+          text: "You want to make this Employee Verified!",
+          icon: "success",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes, update it"
+        }).then((result) => {
+          if (result.isConfirmed) {
+         
+          axiosSecure.patch(`users/employee/${employee._id}`)
+          .then(res=>{
+              console.log(res.data);
+              if(res.data.modifiedCount > 0){
+                  refetch()
+                  Swal.fire({
+                      title: "Done!",
+                      text: "this user is Verified now.",
+                      icon: "success"
+                    });
+
+              }
+          })
+          }
+        })  .catch(error => {
+          // Handle error, show user a message, etc.
+          console.error('Error updating user verification:', error);
+        });
+
+  }
     return (
         <div>
              <div className='flex justify-evenly my-4 text-center'>
@@ -49,7 +88,11 @@ const AllEmployee = () => {
             <th> {index+1} </th>
             <td> {employee.name}</td>
             <td> {employee.email}</td>
-            <td><button className='btn text-white bg-purple-500'>Make Verified</button></td>
+            {/* <td><button className='btn text-white bg-purple-500'>Make Verified</button></td> */}
+            <td>
+              {employee.isVerified == 'verified'? 'Verified': <button onClick={()=>handleMakeVerified(employee)}  className="btn  p-3 py-1 my-2 text-white text-lg bg-green-700">Make Verified </button>}
+               
+              </td>
             <td> {employee.bank_account_no}</td>
             <td>{employee.salary}</td>
             <td>{employee.role}</td>

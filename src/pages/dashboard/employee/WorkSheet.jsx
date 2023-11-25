@@ -46,13 +46,13 @@ const WorkSheet = () => {
     refetch();
     Swal.fire({
         title: "Done!",
-        text: "this user is admin now.",
+        text: "Task Added",
         icon: "success"
       });
    }
    else{
     // Handle error, show user a message, etc.
-    console.error('Error sending data to the backend:', error);
+    console.error('Error:', error);
   }
   
  

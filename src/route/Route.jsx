@@ -9,9 +9,10 @@ import ContactUs from "../pages/contactUs/ContactUs";
 import Login from "../pages/login/Login";
 import Registration from "../pages/signup/Registration";
 import Dashboard from "../layout/dashboard/Dashboard";
-import AllEmployee from "../pages/dashboard/admin/AllEmployee";
+
 import EmployeeDetail from "../pages/dashboard/hr/employeeDetail";
 import WorkSheet from "../pages/dashboard/employee/WorkSheet";
+import AllEmployee from "../pages/dashboard/hr/AllEmployee";
 
   export const router = createBrowserRouter([
     {

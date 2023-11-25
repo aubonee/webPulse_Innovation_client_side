@@ -4,8 +4,8 @@ import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../../providers/AuthProvider';
 
 const Navbar = () => {
-  const {user, logOut} = useContext(AuthContext);
-
+  const {user, setUser, logOut} = useContext(AuthContext);
+  // console.log('user photo url:',user.photoURL);
   const handleSignOut =() =>{
     logOut()
     .then()
