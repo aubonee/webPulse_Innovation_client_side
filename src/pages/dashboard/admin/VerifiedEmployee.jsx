@@ -16,7 +16,7 @@ const VerifiedEmployee = () => {
         }
     })
 
-    const employees= users.filter(user=> user.role==='employee' && user.isVerified==='verified' );
+    const employees= users.filter(user=> user.role==='hr' || user.isVerified==='verified' );
     const handleMakeHr=employee=>{
         axiosSecure.patch(`/users/hr/${employee._id}`)
         .then(res =>{
@@ -90,7 +90,11 @@ const VerifiedEmployee = () => {
             <td> {index+1} </td>
             <td> {employee.name}</td>
             <td> {employee.designation}</td>
-            <td> <button onClick={() => handleMakeHr(employee)} className='btn text-white bg-purple-500'>Make HR</button></td>
+            {/* <td> <button onClick={() => handleMakeHr(employee)} className='btn text-white bg-purple-500'>Make HR</button></td> */}
+            <td>
+              {employee.role == 'hr'? <h2 className=' font-bold ml-3 text-green-700'>HR</h2>: <button onClick={()=>handleMakeHr(employee)}  className="btn  p-3 py-1 my-2 text-white bg-purple-500">Make HR </button>}
+               
+              </td>
             <td><button  onClick={() => handleDeleteUser(employee)} className='btn text-white bg-purple-500'>Fire</button></td>
         </tr>
         )
