@@ -14,10 +14,14 @@ import MonthPicker from 'react-month-picker';
 const AllEmployee = () => {
     const axiosSecure =useAxiosSecure();
     
-    const [selectedDate, setSelectedDate] = useState(null);
+    const [selectedMonth, setSelectedMonth] = useState(null);
+    const [selectedYear, setSelectedYear] = useState(null);
       
-    const handleDateChange = (date) => {
-      setSelectedDate(date);
+    const handleMonthChange = (month) => {
+      setSelectedMonth(month);
+    };
+    const handleYearChange = (year) => {
+      setSelectedYear(year);
     };
   
     const { data:users=[] , refetch}=useQuery({
@@ -152,11 +156,11 @@ const AllEmployee = () => {
      <div className="flex gap-5">
      <div className='form-control'>
      <label className="label">
-    <span className="label-text  font-bold">Choose the Month:</span>
+    <span className="label-text font-bold">Choose the Month:</span>
   </label>
       <DatePicker className='input input-bordered w-full max-w-xs'
-        selected={selectedDate}
-        onChange={handleDateChange}
+        selected={selectedMonth}
+        onChange={handleMonthChange}
         showMonthYearPicker
         dateFormat="MM"
         
@@ -167,9 +171,9 @@ const AllEmployee = () => {
     <span className="label-text  font-bold">Choose the Year:</span>
   </label>
       <DatePicker className='input input-bordered w-full max-w-xs'
-        selected={selectedDate}
-        onChange={handleDateChange}
-        showMonthYearPicker
+        selected={selectedYear}
+        onChange={handleYearChange}
+        showYearPicker
         dateFormat="yyyy"
         
       />

@@ -9,11 +9,12 @@ import ContactUs from "../pages/contactUs/ContactUs";
 import Login from "../pages/login/Login";
 import Registration from "../pages/signup/Registration";
 import Dashboard from "../layout/dashboard/Dashboard";
-
+import PrivateRoute from "./PrivateRoute"
 import EmployeeDetail from "../pages/dashboard/hr/employeeDetail";
 import WorkSheet from "../pages/dashboard/employee/WorkSheet";
 import AllEmployee from "../pages/dashboard/hr/AllEmployee";
 import VerifiedEmployee from "../pages/dashboard/admin/VerifiedEmployee";
+import AdminRoute from "./AdminRoute";
 
   export const router = createBrowserRouter([
     {
@@ -43,12 +44,9 @@ import VerifiedEmployee from "../pages/dashboard/admin/VerifiedEmployee";
     },
     {
         path: "/dashboard",
-        element: <Dashboard></Dashboard>,
+        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
         children:[
-            {
-                path: " ",
-                element: <AllEmployee></AllEmployee>
-            },
+           
             {
                 path: "allemployee",
                 element: <AllEmployee></AllEmployee>
@@ -58,8 +56,9 @@ import VerifiedEmployee from "../pages/dashboard/admin/VerifiedEmployee";
                 element: <WorkSheet></WorkSheet>
             },
             {
-                path: "verifiedemployee",
-                element: <VerifiedEmployee></VerifiedEmployee>
+                // path: " ",
+                 path: "verifiedemployee",
+                element: <AdminRoute><VerifiedEmployee></VerifiedEmployee></AdminRoute>
             },
             {
                 path: 'employeeDetail/:id',

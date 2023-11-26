@@ -5,14 +5,16 @@ import { GoogleAuthProvider, getAuth,
        onAuthStateChanged, 
       signInWithEmailAndPassword, signInWithPopup, signOut,updateProfile } from 'firebase/auth';
 import app from '../firebase/firebase.config';
+import useAxiosPublic from '../hooks/UseAxiosPublic';
 
 
 export const AuthContext = createContext(null);
 
+
 // eslint-disable-next-line react/prop-types
 const AuthProvider = ({children}) => {
     const auth = getAuth(app)
-   
+    const axiosPublic=useAxiosPublic();
     const [user,setUser] =useState(null);
     const [loading,setLoading] =useState(true);
 
@@ -58,20 +60,21 @@ const AuthProvider = ({children}) => {
                console.log('auth state changed', currentUser)
                setUser(currentUser);
             ///////////////////////////////////////////////////////////
-            //    if(currentUser){
-            //     //get token and store client
-            //     const userInfo ={email:currentUser.email};
-            //     axiosPublic.post('/jwt',userInfo)
-            //     .then(res=>{
-            //         if(res.data.token){
-            //             localStorage.setItem('access-token',res.data.token); 
+               if(currentUser){
+                //get token and store client
+                const userInfo ={email:currentUser.email};
+                axiosPublic.post('/jwt',userInfo)
+                .then(res=>{
+                    if(res.data.token){
+                        localStorage.setItem('access-token',res.data.token); 
                         
-            //     }
-            //  })
-            //    }
-            //    else{
-            //     //todo:remove token(if token stored in the client side: local storage,caching, in memory)
-            //    }
+                }
+             })
+               }
+               else{
+                localStorage.removeItem('access-token');
+                //todo:remove token(if token stored in the client side: local storage,caching, in memory)
+               }
             ///////////////////////////////////////////////////////////
                setLoading(false);
     
@@ -81,7 +84,7 @@ const AuthProvider = ({children}) => {
     
           }
               
-       }, [auth])
+       }, [auth, axiosPublic])
     
     const authInfo ={
         user,

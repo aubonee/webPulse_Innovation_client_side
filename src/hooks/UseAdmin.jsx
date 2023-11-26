@@ -3,6 +3,7 @@ import useAuth from "./useAuth";
 import useAxiosSecure from "./UseAxiosSecure";
 
 
+
 const useAdmin = () => {
     const { user } = useAuth();
     const axiosSecure = useAxiosSecure();
