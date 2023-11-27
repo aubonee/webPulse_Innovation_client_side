@@ -1,18 +1,21 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import useAxiosSecure from '../../../hooks/UseAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../../../providers/AuthProvider';
 
 const WorkSheet = () => {
+  const {user} = useContext(AuthContext);
+  // const email = user?.email ;
   const axiosSecure=useAxiosSecure();
   const { data:items=[] ,refetch }=useQuery({
     //refetch
-    queryKey:['items'],
+    queryKey:['items',user?.email],
     queryFn:async ()=>{
-        const res =await axiosSecure.get('/worksheet');
+        const res =await axiosSecure.get( `/worksheet?email=${user?.email}`);
         return res.data
   
     }
@@ -33,10 +36,11 @@ const WorkSheet = () => {
   console.log('hours:',hours);
   console.log('selectedDate:', selectedDate);
   const taskItem={
-    
+   
      task,
      hours,
      selectedDate,
+     email:user?.email
 
   }
    const taskRes =await axiosSecure.post('/workSheet',taskItem);

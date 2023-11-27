@@ -58,7 +58,8 @@ import AdminRoute from "./AdminRoute";
             {
                 // path: " ",
                  path: "verifiedemployee",
-                element: <AdminRoute><VerifiedEmployee></VerifiedEmployee></AdminRoute>
+                 //element: <VerifiedEmployee></VerifiedEmployee>
+                 element: <AdminRoute><VerifiedEmployee></VerifiedEmployee></AdminRoute>
             },
             {
                 path: 'employeeDetail/:id',
