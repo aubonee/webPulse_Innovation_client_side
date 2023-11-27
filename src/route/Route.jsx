@@ -15,6 +15,8 @@ import WorkSheet from "../pages/dashboard/employee/WorkSheet";
 import AllEmployee from "../pages/dashboard/hr/AllEmployee";
 import VerifiedEmployee from "../pages/dashboard/admin/VerifiedEmployee";
 import AdminRoute from "./AdminRoute";
+import HrRoute from "./HrRoute";
+import Progress from "../pages/dashboard/hr/Progress";
 
   export const router = createBrowserRouter([
     {
@@ -49,7 +51,13 @@ import AdminRoute from "./AdminRoute";
            
             {
                 path: "allemployee",
-                element: <AllEmployee></AllEmployee>
+                element:<HrRoute><AllEmployee></AllEmployee></HrRoute> 
+
+            },
+            {
+                path: "progress",
+                element:<HrRoute><Progress></Progress></HrRoute> 
+
             },
             {
                 path: "worksheet",

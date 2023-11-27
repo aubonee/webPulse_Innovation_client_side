@@ -10,30 +10,26 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import MonthPicker from 'react-month-picker';
 
+import {Elements} from '@stripe/react-stripe-js';
+import {loadStripe} from '@stripe/stripe-js';
+import CheckOutForm from './payment/CheckOutForm';
+
 
 const AllEmployee = () => {
+  const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_PK);
     const axiosSecure =useAxiosSecure();
     
-    const [selectedMonth, setSelectedMonth] = useState(null);
-    const [selectedYear, setSelectedYear] = useState(null);
+   
       
-    const handleMonthChange = (month) => {
-      setSelectedMonth(month);
-    };
-    const handleYearChange = (year) => {
-      setSelectedYear(year);
-    };
-  
     const { data:users=[] , refetch}=useQuery({
-        //refetch
-        queryKey:['users'],
-        queryFn:async ()=>{
-            const res =await axiosSecure.get('/users');
-            return res.data
+      //refetch
+      queryKey:['users'],
+      queryFn:async ()=>{
+          const res =await axiosSecure.get('/users');
+          return res.data
 
-        }
-    })
-
+      }
+  })
 
     const employees= users.filter(user=> user.role==='employee');
 
@@ -151,34 +147,17 @@ const AllEmployee = () => {
         <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
       </form >
       <h3 className="font-bold text-lg">Salary:{employee.salary}</h3>
-<form className='flex flex-col items-center justify-center'>
+<form className=''>
      
-     <div className="flex gap-5">
-     <div className='form-control'>
-     <label className="label">
-    <span className="label-text font-bold">Choose the Month:</span>
-  </label>
-      <DatePicker className='input input-bordered w-full max-w-xs'
-        selected={selectedMonth}
-        onChange={handleMonthChange}
-        showMonthYearPicker
-        dateFormat="MM"
-        
-      />
-     </div>
-     <div className='form-control'>
-     <label className="label">
-    <span className="label-text  font-bold">Choose the Year:</span>
-  </label>
-      <DatePicker className='input input-bordered w-full max-w-xs'
-        selected={selectedYear}
-        onChange={handleYearChange}
-        showYearPicker
-        dateFormat="yyyy"
-        
-      />
-     </div>
-     </div>
+     
+     <div>
+          
+            <div>
+            <Elements stripe={stripePromise}>
+      <CheckOutForm/>
+    </Elements>
+            </div>
+        </div>
      <div> <button className='btn btn-primary my-5' type="submit">Submit</button></div>
      </form>
 

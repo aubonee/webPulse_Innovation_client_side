@@ -15,8 +15,8 @@ const Dashboard = () => {
     // const [isEmployee]=useEmployee();
     return (
         <div className='flex flex-col'>
-              <div className='w-full flex justify-between'>
-            <div className='w-64 min-h-screen bg-gray-400'>
+              <div className='w-full flex flex-col lg:flex-row lg:justify-between'>
+            <div className='w-full lg:w-64 h-[250px] lg:min-h-screen text-white bg-gray-800'>
                 <ul className='p-4'>
                    
                     {isAdmin? <> 
@@ -29,9 +29,7 @@ const Dashboard = () => {
 
                     </> : <> </>
 
-                    }
-              <li>home</li>
-                   
+                    }           
                   
                 </ul>
             </div>
