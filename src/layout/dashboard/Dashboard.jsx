@@ -35,7 +35,7 @@ const Dashboard = () => {
             </div>
            
            
-            <div className='flex-1'> <Outlet></Outlet> </div>
+            <div className=' ml-5 flex-1'> <Outlet></Outlet> </div>
         </div>
            
         </div>
