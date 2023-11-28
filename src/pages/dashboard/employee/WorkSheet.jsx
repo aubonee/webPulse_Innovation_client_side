@@ -66,7 +66,7 @@ const WorkSheet = () => {
   return (
     <div>
       <div>
-      <form onSubmit={handleWorksheet} className='py-5 my-5 mx-auto  bg-purple-500 flex items-center justify-around' action="">
+      <form onSubmit={handleWorksheet} className='py-5 my-5 mx-auto  bg-[#b057a3] flex items-center justify-around' action="">
 
 <div className="form-control">
 

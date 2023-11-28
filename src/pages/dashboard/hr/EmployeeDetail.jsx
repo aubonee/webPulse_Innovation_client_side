@@ -4,21 +4,19 @@ import { useLoaderData } from 'react-router-dom';
 
 const EmployeeDetail = () => {
    // const axiosSecure =useAxiosSecure();
-    const {name,image, designation,_id} = useLoaderData();
+    const {name,image, designation,role,_id} = useLoaderData();
     
     return (
 
-        <div>
-            {/* Employee Detail
-           <h2>{name}</h2> 
-           <img src={image} alt="" />
-           <p></p> */}
+        <div className='mx-auto mt-5'>
+          
            <div>
-           <div className="card lg:card-side bg-base-100 shadow-xl">
-  <figure><img src={image} alt="Album"/></figure>
-  <div className="card-body">
-    <h2 className="card-title">{name}</h2>
-    <p>{designation}</p>
+           <div className="mx-auto text-white card lg:card-side bg-[#b057a3] max-w-[800px] shadow-xl">
+  <figure><img className='h-[200px]' src={image} alt="Album"/></figure>
+  <div className="card-body text-xl">
+    <p><span className='text-xl font-bold mr-1'>Name:</span>{name}</p>
+    <p><span className='text-xl font-bold mr-1'>Role:</span>{role}</p>
+    <p> <span className='text-xl font-bold mr-1'>Designation:</span>{designation}</p>
    
   </div>
 </div>
