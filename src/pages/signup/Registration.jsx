@@ -65,32 +65,6 @@ const Registration = () => {
                     }).catch(error => console.log(error))
 
 
-                // updateUser(data.name, data.imageFile)
-                //     .then(() => {
-                //         // create user entry in the database
-                //         const userInfo = {
-                //             name: data.name,
-                //             email: data.email,
-                //             role: data.role,
-                //             image: res.data.data.display_url
-                //         }
-                //   console.log('userInfo', userInfo.data)
-                // axiosPublic.post('/users', userInfo)
-                //     .then(res => {
-                //         if (res.data.insertedId) {
-                //             console.log('user added to the database')
-                //             reset();
-                //             Swal.fire({
-                //                 position: 'top-end',
-                //                 icon: 'success',
-                //                 title: 'User created successfully.',
-                //                 showConfirmButton: false,
-                //                 timer: 1500
-                //             });
-                //             navigate('/');
-                //         }
-                //     })
-
 
             })
             .catch(error => console.log(error))
@@ -102,30 +76,35 @@ const Registration = () => {
             <Helmet>
                 <title>WebPulse | Sign Up</title>
             </Helmet>
-            <div className="hero min-h-screen  bg-base-100 shadow-2xl">
-                <div className="hero-content flex-col lg:flex-row-reverse">
-                    <div className="text-center  w-full lg:w-1/2 lg:text-left">
-                        <img className=' bg-base-100 w-96' src={regimg} alt="" />  </div>
-                    <div className="w-full lg:w-1/2 p-6  bg-base-100">
+            <div className=" mx-auto p-0 mb-5 hero min-h-screen text-black w-11/12 lg:w-5/6 ">
+           
+                <div className="hero-content flex-col bg-[#b057a3] lg:flex-row-reverse">
+                    <div className="  w-full lg:w-1/2 m-0"> 
+                           <img className=' shadow-lg ' src={regimg} alt="" /> 
+                     </div>
+                    <div className="w-full md:w-5/6 lg:w-1/2 p-6 m-0 ">
                         <form onSubmit={handleSubmit(onSubmit)} >
-                            <div className="form-control">
+                        <h1 className="text-5xl font-bold text-white text-center mb-5">SignUp now!</h1>
+                           <div className='flex flex-col lg:flex-row gap-5 w-full'>
+                           <div className="form-control w-full lg:w-1/2">
                                 <label className="label">
-                                    <span className="label-text">Name</span>
+                                    <span className="label-text text-white text-md uppercase">Name</span>
                                 </label>
-                                <input type="text"  {...register("name", { required: true })} name="name" placeholder="Name" className="input input-bordered" />
+                                <input type="text"  {...register("name", { required: true })} name="name" placeholder="Name" className="input input-bordered w-full" />
                                 {errors.name && <span className="text-red-600">Name is required</span>}
                             </div>
 
-                            <div className="form-control">
+                            <div className="form-control w-full  lg:w-1/2">
                                 <label className="label">
-                                    <span className="label-text">Email</span>
+                                    <span className="label-text text-white text-md uppercase">Email</span>
                                 </label>
-                                <input type="email"  {...register("email", { required: true })} name="email" placeholder="email" className="input input-bordered" />
+                                <input type="email"  {...register("email", { required: true })} name="email" placeholder="email" className="input input-bordered w-full" />
                                 {errors.email && <span className="text-red-600">Email is required</span>}
                             </div>
+                           </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Password</span>
+                                    <span className="label-text text-white text-md uppercase">Password</span>
                                 </label>
                                 <input type="password"  {...register("password", {
                                     required: true,
@@ -146,7 +125,7 @@ const Registration = () => {
                                 {/* role */}
                                 <div className="form-control w-full my-6">
                                     <label className="label">
-                                        <span className="label-text">Role*</span>
+                                        <span className="label-text text-white uppercase">Role</span>
                                     </label>
                                     <select defaultValue="default" {...register('role', { required: true })}
                                         className="select select-bordered w-full">
@@ -159,7 +138,7 @@ const Registration = () => {
                                 {/* designation */}
                                 <div className="form-control w-1/2 my-6">
                                     <label className="label">
-                                        <span className="label-text">Designation*</span>
+                                        <span className="label-text text-white text-md uppercase">Designation</span>
                                     </label>
                                     <select defaultValue="default" {...register('designation', { required: true })}
                                         className="select select-bordered w-full">
@@ -176,15 +155,15 @@ const Registration = () => {
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">bank account no.</span>
+                                    <span className="label-text text-white text-md uppercase">bank account no.</span>
                                 </label>
                                 <input type="text"  {...register("bank_account_no", { required: true })} name="bank_account_no" placeholder="bank_account_no" className="input input-bordered" />
                                 {errors.bank_account_no && <span className="text-red-600">bank account no. is required</span>}
                             </div>
                             {/* salary */}
                             <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text">salary</span>
+                                <label className="label ">
+                                    <span className="lebel-text text-white text-md uppercase">salary</span>
                                 </label>
                                 <input type="number"  {...register("salary", { required: true })} name="salary" placeholder="Salary" className="input input-bordered" />
                                 {errors.salary && <span className="text-red-600">bank account no. is required</span>}
@@ -194,10 +173,10 @@ const Registration = () => {
                                 <input {...register('image', { required: true })} type="file" className="file-input w-full max-w-xs" />
                             </div>
                             <div className="form-control mt-6">
-                                <input className="btn btn-primary" type="submit" value="Sign Up" />
+                                <input className="btn bg-black w-full text-white " type="submit" value="Sign Up" />
                             </div>
                         </form>
-                        <p className="px-6"><small>Already have an account <Link to="/login" className='text-blue-600'>Login</Link></small></p>
+                        <p className="py-3 text-white"><small>Already have an account? <br /> <Link to="/login" className='btn bg-black w-full text-white '>Login</Link></small></p>
 
                     </div>
                 </div>

@@ -10,7 +10,7 @@ const MainLayout = () => {
         <div>
           {/* {noHeaderFooter || <Nav></Nav>}  */}
           <Navbar></Navbar>
-            <Outlet></Outlet>
+            <div className='pt-32'><Outlet></Outlet></div>
             {/* {noHeaderFooter ||  <Footer></Footer>}   */}
             <Footer></Footer>
         </div>

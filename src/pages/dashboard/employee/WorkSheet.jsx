@@ -66,46 +66,7 @@ const WorkSheet = () => {
   return (
     <div>
       <div>
-      <form onSubmit={handleWorksheet} className='py-5 my-5 mx-auto  bg-purple-500 flex items-center justify-around' action="">
 
-<div className="form-control">
-
-  <label className="task">
-    <span className="label-text my-1  text-white font-bold ">Choose a Task:</span>
-  </label>
- 
-  <select className=' mt-2 input input-bordered text-black' name="task" id="cars" required defaultValue="default">
-    <option disabled value="default" >select one</option>
-    <option value="sales">Sales</option>
-    <option value="support">Support</option>
-    <option value="content">Content</option>
-    <option value="paperwork">Paper Work</option>
-  </select>
-</div>
-<div className="form-control">
-  <label className="label">
-    <span className="label-text  text-white font-bold">Hours</span>
-  </label>
-  <input type="number" name='hours' placeholder="Hours" className="input input-bordered text-black" required />
-
-</div>
-<div className="form-control">
-  <label className="label">
-    <span className="label-text text-white font-bold">Choose the Date</span>
-  </label>
-    <DatePicker placeholderText='pick the date' className="input input-bordered text-black" required
-      selected={selectedDate}
-      onChange={handleDateChange}
-      dateFormat="MMMM d, yyyy" 
-    />
-
-</div>
-<div className='form-control '>
-  {/* <button type='submit' className='btn btn-ghost bg-gray-100 font-bold px-5 mt-6'>Add  </button> */}
-  <input className="btn  btn-ghost bg-gray-100 font-bold px-5 mt-6"  type="submit" value="Submit"/>
-</div>
-
-</form>
       </div>
       <div>
       <h2 className='text-3xl'>Total items : {items.length}</h2>
