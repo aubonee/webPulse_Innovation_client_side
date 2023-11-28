@@ -4,10 +4,11 @@ import useAxiosSecure from "./UseAxiosSecure";
 
 
 const useEmployee = () => {
-    const { user } = useAuth();
+    const { user,loading } = useAuth();
     const axiosSecure = useAxiosSecure();
     const { data: isEmployee, isPending: isEmployeeLoading } = useQuery({
         queryKey: [user?.email, 'isEmployee'],
+        enabled:!loading && !!localStorage.getItem('access-token'),
         queryFn: async () => {
             const res = await axiosSecure.get(`/users/anemployee/${user.email}`);
             console.log(res.data);

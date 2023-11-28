@@ -2,25 +2,39 @@ import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
 import { AuthContext } from '../../../providers/AuthProvider';
+import useAdmin from '../../../hooks/UseAdmin';
+import useHr from '../../../hooks/UseHr';
+import useEmployee from '../../../hooks/UseEmployee';
 
 const Navbar = () => {
-  const {user, setUser, logOut} = useContext(AuthContext);
+  const {user,  logOut} = useContext(AuthContext);
+  const [isAdmin] = useAdmin();
+  const [isHr] = useHr();
+  const [isEmployee] = useEmployee();
   // console.log('user photo url:',user.photoURL);
+
   const handleSignOut =() =>{
     logOut()
     .then()
     .catch()
   }
     const navItems = <>
-    <li><NavLink to="/" className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "active" : ""}> Home</NavLink></li>
-    <li><NavLink to="/contactus" className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "active" : ""}> Contact us</NavLink></li>
-    <li>    {   user ?
-   " "
-  :
-  <Link className=" " to="/login">Login</Link>
-  }</li>
-    <li><NavLink to="/dashboard/worksheet" className={({ isActive, isPending }) =>  isPending ? "pending" : isActive ? "active" : ""}> Dashboard</NavLink></li>
-   
+    <li><NavLink to="/" className={({ isActive, isPending }) => isPending ? "pending" : isActive ? " text-[#db23c0] text-2xl font-bold underline underline-offset-8" : "text-[#db23c0] text-2xl font-bold"}> Home</NavLink></li>
+    <li><NavLink to="/contactus" className={({ isActive, isPending }) => isPending ? "pending" : isActive ? " text-[#db23c0] text-2xl font-bold underline underline-offset-8" : "text-[#db23c0] text-2xl font-bold"}> Contact us</NavLink></li>
+    <li>    {   user ?" ":<NavLink className={({ isActive, isPending }) => isPending ? "pending" : isActive ? " text-[#db23c0] text-2xl font-bold underline underline-offset-8" : "text-[#db23c0] text-2xl font-bold"}to="/login">Login</NavLink>}</li>
+    
+        
+        { 
+            user && isEmployee &&<li><NavLink to="/dashboard/worksheet" className={({ isActive, isPending }) =>  isPending ? "pending" : isActive ? " text-[#db23c0] text-2xl font-bold underline underline-offset-8" : "text-[#db23c0] text-2xl font-bold"}> Dashboard</NavLink></li>
+        }
+        {
+            user && isHr && <li><NavLink to="/dashboard/allemployee" className={({ isActive, isPending }) =>  isPending ? "pending" : isActive ? " text-[#db23c0] text-2xl font-bold underline underline-offset-8" : "text-[#db23c0] text-2xl font-bold"}> Dashboard</NavLink></li>
+        }
+          
+        {
+            user && isAdmin && <li><NavLink to="/dashboard/verifiedemployee" className={({ isActive, isPending }) =>  isPending ? "pending" : isActive ? " text-[#db23c0] text-2xl font-bold underline underline-offset-8" : "text-[#db23c0] text-2xl font-bold"}> Dashboard</NavLink></li>
+        }
+  
 
   </>
     return (
@@ -49,7 +63,7 @@ const Navbar = () => {
      
         </div>
         <div> {
-        user && <h2 className='text-red-500'>{user.displayName}</h2> 
+        user && <h2 className='text-[#db23c0] text-2xl font-bold'>{user.displayName}</h2> 
       }</div>
       </div>
       <div>
@@ -70,7 +84,7 @@ const Navbar = () => {
      
       {
     user && 
-    <button onClick={handleSignOut} className="text-sm  my-2 mx-2 btn rounded-none bg-[#FF6969]  border-2 border-spacing-y-3 border-spacing-x-7 text-[#FFFFFA] border-[#FF6969]">Sign Out</button>
+    <button onClick={handleSignOut} className="text-sm  my-2 mx-2 btn rounded-none bg-[#db23c0]  border-2 border-spacing-y-3 border-spacing-x-7 text-[#FFFFFA] border-[#db23c0]">Sign Out</button>
   
   }
       </ul>
