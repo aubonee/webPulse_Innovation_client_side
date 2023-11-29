@@ -55,7 +55,7 @@ const Registration = () => {
                                         icon: 'success',
                                         title: 'Registration  Succesful',
                                         showConfirmButton: false,
-                                        timer: 1500
+                                        timer: 1000
                                     })
                                     navigate('/');
                                 }

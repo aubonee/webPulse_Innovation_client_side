@@ -118,7 +118,7 @@ const AllEmployee = () => {
         <th> Name</th>
         <th> Email</th>
         <th>Verified Status</th>
-        <th>Bank Account</th>
+      
         <th>Salary</th>
         <th>Role</th>
         <th>Action</th>
@@ -134,32 +134,33 @@ const AllEmployee = () => {
             <th> {index+1} </th>
             <td> {employee.name}</td>
             <td> {employee.email}</td>
-            {/* <td><button className='btn text-white bg-purple-500'>Make Verified</button></td> */}
             <td>
               {employee.isVerified == 'verified'? <button onClick={()=>handleMakeUnVerified(employee)}  className="btn  p-3 py-1 my-2 text-green-500 text-lg "><FaCheck/> </button> : <button onClick={()=>handleMakeVerified(employee)}  className="btn  p-3 py-1 my-2  text-lg text-red-700"><ImCross /> </button>}
                
               <div>
   
 
-  <dialog id="my_modal_3" className="modal">
+  <dialog id={`my_modal_${employee._id}`} className="modal">
     <div className="modal-box min-h-[300px]">
-      <form method="dialog">
-        {/* if there is a button in form, it will close the modal */}
-        <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-      </form >
-      <h3 className="font-bold text-lg">Salary:{employee.salary}</h3>
-<form className=''>
+
      
+<form method="dialog">
+
      
      <div>
           
             <div>
             <Elements stripe={stripePromise}>
-      <CheckOutForm/>
+    
+      {employee.salary ? (
+      <CheckOutForm key={employee._id} employee={employee} />
+    ) : (
+      <p>Salary is undefined</p>
+    )}
     </Elements>
             </div>
         </div>
-     <div> <button className='btn btn-primary my-5' type="submit">Submit</button></div>
+     <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
      </form>
 
     
@@ -170,7 +171,7 @@ const AllEmployee = () => {
             <td> {employee.bank_account_no}</td>
             <td>{employee.salary}</td>
             <td>{employee.role}</td>
-            <td> <button className='btn text-white bg-purple-500'onClick={()=>document.getElementById('my_modal_3').showModal()} disabled={employee.isVerified !== 'verified'}>Pay</button></td>
+            <td> <button className='btn text-white bg-purple-500'onClick={()=>document.getElementById(`my_modal_${employee._id}`).showModal()} disabled={employee.isVerified !== 'verified'}>Pay</button></td>
             <td> <Link to={`/dashboard/employeeDetail/${employee._id}`}  className='btn text-white bg-purple-500'>Details</Link></td>
         </tr>
         )
