@@ -13,6 +13,7 @@ import MonthPicker from 'react-month-picker';
 import {Elements} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
 import CheckOutForm from './payment/CheckOutForm';
+import SectionTitle from '../../../components/shared/sectinTitle/SectionTitle';
 
 
 const AllEmployee = () => {
@@ -100,14 +101,14 @@ const AllEmployee = () => {
 
 }
     return (
-        <div>
+        <div className='mx-auto w-full'>
+            <SectionTitle heading="All Employee" subHeading="All the verified & unverified employee list"></SectionTitle>
              <div className='flex justify-evenly my-4 text-center'>
-            <h2 className='text-3xl'>All Users</h2>
-                <h2 className='text-3xl'>Total Users : {users.length}</h2>
+         
             </div>
 
             <div className="overflow-x-auto">
-  <table className="table  w-full mt-5">
+  <table className="table mx-5 w-full mt-5">
     {/* head */}
     <thead>
       <tr>

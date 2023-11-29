@@ -28,7 +28,7 @@ const CheckOutForm = () => {
   
         }
     })
-   // const salary =users.salary
+   const salary =users.salary
     useEffect(()=>{
       axiosSecure.post('/create-payment-intent')
     },[])
@@ -62,6 +62,7 @@ const CheckOutForm = () => {
     return (
         <form onSubmit={handleSubmit} className=' py-2 pl-1 pr-2'>
                  <div className="flex gap-5 mb-3">
+                  <div>{salary}</div>
      <div className="">
      <label className="label">
     <span className="label-text font-bold">Choose the Month:</span>

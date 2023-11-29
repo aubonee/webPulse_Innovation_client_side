@@ -8,10 +8,10 @@ const EmployeeDetail = () => {
     
     return (
 
-        <div className='mx-auto mt-5'>
+        <div className='p-5 mx-auto mt-5'>
           
            <div>
-           <div className="mx-auto text-white card lg:card-side bg-[#b057a3] max-w-[800px] shadow-xl">
+           <div className="p-5 mx-auto text-white card lg:card-side bg-[#b057a3] max-w-[800px] shadow-xl">
   <figure><img className='h-[200px]' src={image} alt="Album"/></figure>
   <div className="card-body text-xl">
     <p><span className='text-xl font-bold mr-1'>Name:</span>{name}</p>

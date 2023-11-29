@@ -3,6 +3,7 @@ import { useContext,  } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
 import Swal from 'sweetalert2';
 import {  Link, useLocation, useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 
 const Login = () => {
@@ -33,7 +34,7 @@ const Login = () => {
          icon: 'success',
          title: 'Login Succesful',
          showConfirmButton: false,
-         timer: 1500
+         timer: 1000
        })
           
        // navigate after login
@@ -45,19 +46,18 @@ const Login = () => {
       Swal.fire({
        icon: 'error',
        title: 'Oops...',
-       text: 'Something went wrong!',
+       text: 'Wrong Email or Password !',
       
      })
     }
-    )
-       
+    ) 
    
     }
-  
-   
- 
     return (
         <div className="hero  w-full min-h-screen ">
+            <Helmet>
+                <title>WebPulse | Login</title>
+            </Helmet>
   <div className="hero-content w-full md:w-5/6 lg:w-1/2  bg-[#b057a3] flex-col ">
     <div className="text-center w-1/2">
       <h1 className="text-5xl font-bold text-white">Login now!</h1>

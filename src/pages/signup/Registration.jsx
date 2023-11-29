@@ -76,7 +76,7 @@ const Registration = () => {
             <Helmet>
                 <title>WebPulse | Sign Up</title>
             </Helmet>
-            <div className=" mx-auto p-0 mb-5 hero min-h-screen text-black w-11/12 lg:w-5/6 ">
+            <div className="mt-32 mx-auto p-0 mb-5 hero min-h-screen text-black w-11/12 lg:w-5/6 ">
            
                 <div className="hero-content flex-col bg-[#b057a3] lg:flex-row-reverse">
                     <div className="  w-full lg:w-1/2 m-0"> 

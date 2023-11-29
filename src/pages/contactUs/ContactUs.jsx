@@ -5,7 +5,7 @@ import SectionTitle from '../../components/shared/sectinTitle/SectionTitle';
 
 const ContactUs = () => {
     return (
-        <div className='mx-auto min-h-screen max-w-screen-xl'>
+        <div className='mx-auto py-16 min-h-screen max-w-screen-xl'>
             <div>
                 <SectionTitle heading="Get in Touch" subHeading=" Reach Out for Collaborations, Inquiries, or Just to Say Hello!"></SectionTitle>
             </div>

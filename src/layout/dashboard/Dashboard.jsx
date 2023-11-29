@@ -52,29 +52,5 @@ const Dashboard = () => {
 
 export default Dashboard;
 
-//  :isEmployee? <>
-// <li> <NavLink to="/dashboard/paymenthistory" className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "active text-xl flex bg-purple-600 text-white p-4" : "p-4 text-xl flex"}>  <FaHome className='flex justify-center items-center mt-1 mx-2'></FaHome>  Payment History</NavLink></li> 
-// <li> <NavLink to="/dashboard/worksheet" className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "active flex text-xl bg-purple-600 text-white p-4" : "p-4 text-xl flex"}> <FaCalendar className='flex justify-center items-center mt-1 mx-2'></FaCalendar>WorkSheet</NavLink></li> 
-// <div className="divider"></div>
-//                             <li><NavLink className="flex text-xl  items-center mt-1 mx-2" to="/"><FaHome className='mx-2'></FaHome> Home</NavLink> </li>
-
-//                         </> 
- {/* {
-                        isAdmin? <>
-
-<li> <NavLink to="/dashboard/verifiedemployee" className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "active text-xl flex bg-purple-600 text-white p-4" : "p-4 text-lg flex"}>  <FaList className='flex justify-center items-center mt-1 mx-2'></FaList> Hr & Verified employee</NavLink></li> 
-<div className="divider"></div>
-                            <li><NavLink className="flex text-xl  items-center mt-1 mx-2" to="/"><FaHome className='mx-2'></FaHome> Home</NavLink> </li>
 
 
-                        </> : isHr?<>
-<li> <NavLink to="/dashboard/allemployee" className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "active text-xl flex bg-purple-600 text-white p-4" : "p-4 text-xl flex"}>  <FaHome className='flex justify-center items-center mt-1 mx-2'></FaHome>  All Employee</NavLink></li> 
-<li> <NavLink to="/dashboard/worksheet" className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "active flex text-xl bg-purple-600 text-white p-4" : "p-4 text-xl flex"}> <FaCalendar className='flex justify-center items-center mt-1 mx-2'></FaCalendar>Progress</NavLink></li> 
-<div className="divider"></div>
-                            <li><NavLink className="flex text-xl  items-center mt-1 mx-2" to="/"><FaHome className='mx-2'></FaHome> Home</NavLink> </li>
-
-               
-                            </>
-                               
-                       : <> blank  </>
-                    } */}

@@ -77,7 +77,7 @@ import PaymentHistory from "../pages/dashboard/employee/PaymentHistory";
             {
                 path: 'employeeDetail/:id',
                 element:<HrRoute><EmployeeDetail></EmployeeDetail></HrRoute> ,
-                loader: ({params}) => fetch(`http://localhost:5000/employeeDetail/${params.id}`)
+                loader: ({params}) => fetch(`https://assignment-12-server-side-five.vercel.app/employeeDetail/${params.id}`)
       
             }
         ]
