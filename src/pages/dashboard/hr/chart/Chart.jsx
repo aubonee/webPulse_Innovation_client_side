@@ -49,12 +49,41 @@ const Chart = () => {
     
     return (
         <div>
-            <p>text</p>
-             <ResponsiveContainer width={800} height={700}>
-        <BarChart  data={data}>
-          <Bar dataKey="uv" fill="#8884d8" />
-        </BarChart>
-      </ResponsiveContainer>
+           <div>
+           {/* <table className="table  w-full mt-5">
+    
+    <thead>
+      <tr>
+        <th> # </th>
+        <th>email</th>
+        <th>Month</th>
+        <th> Year</th>
+        <th>Transection Id</th>
+       
+
+      </tr>
+    </thead>
+    <tbody>
+   
+    {
+        payments.map((payment,index)=>
+        <tr key={payment._id}>
+            <th> {index+1} </th>
+            <td> {payment.email}</td>
+            <td> {payment.month}</td>
+            <td> {payment.year}</td>
+            <td> {payment.transactionId}</td>
+            
+            
+        </tr>
+        )
+     } 
+    </tbody>
+  
+   
+    
+  </table> */}
+           </div>
             
         </div>
     );

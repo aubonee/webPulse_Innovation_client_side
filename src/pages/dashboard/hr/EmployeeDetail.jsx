@@ -72,14 +72,14 @@ const EmployeeDetail = () => {
     
     return (
 
-        <div className='p-5 flex flex-col justify-center mx-auto mt-5'>
+        <div className='p-5 flex flex-col justify-around gap-10 items-center mx-auto mt-5'>
           
            <div>
            <div className="p-5 mx-auto text-white card lg:card-side bg-[#b057a3] max-w-[800px] shadow-xl">
   <figure><img className='h-[200px]' src={image} alt="Album"/></figure>
   <div className="card-body text-xl">
     <p><span className='text-xl font-bold mr-1'>Name:</span>{name}</p>
-    <p><span className='text-xl font-bold mr-1'>email:</span>{email}</p>
+   
     <p><span className='text-xl font-bold mr-1'>Role:</span>{role}</p>
     <p> <span className='text-xl font-bold mr-1'>Designation:</span>{designation}</p>
    
@@ -88,8 +88,8 @@ const EmployeeDetail = () => {
 </div>
            </div>
            <div>
-           <table className="table  w-full mt-5">
-    {/* head */}
+           {/* <table className="table  w-full mt-5">
+    
     <thead>
       <tr>
         <th> # </th>
@@ -102,7 +102,7 @@ const EmployeeDetail = () => {
       </tr>
     </thead>
     <tbody>
-      {/* row 1 */}
+   
     {
         payments.map((payment,index)=>
         <tr key={payment._id}>
@@ -117,15 +117,15 @@ const EmployeeDetail = () => {
         )
      } 
     </tbody>
-    {/* foot */}
+  
    
     
-  </table>
+  </table> */}
            </div>
            <div>
            <div>
             <p>text</p>
-             <ResponsiveContainer width={800} height={700}>
+             <ResponsiveContainer width={800} height={400}>
         <BarChart  data={payments}>
         <XAxis dataKey="month" />
       <YAxis />
