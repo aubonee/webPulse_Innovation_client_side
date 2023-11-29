@@ -4,11 +4,12 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import useAxiosSecure from '../../../../hooks/UseAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
+import Swal from 'sweetalert2';
 
 const CheckOutForm = ({employee}) => {
   //console.log('Employee:', employee);
   const salary = employee.salary;
-  const name = employee.name;
+  // const name = employee.name;
  // console.log(salary);
     const [error,setError] =useState('');
     const [clientSecret, setClientSecret] =useState('');    const [selectedMonth, setSelectedMonth] = useState(null);
@@ -61,11 +62,8 @@ const CheckOutForm = ({employee}) => {
         card: card,
         billing_details: {
           name: employee?.name,
-          email:employee?.email
-          // salary:employee?.salary,
-          // month:selectedMonth,
-          // year:selectedYear
-
+          email:employee?.email,
+          
         },
       },
     })
@@ -78,8 +76,28 @@ const CheckOutForm = ({employee}) => {
       console.log('transsaction id', paymentIntent.id);
     setTranssactionId(paymentIntent.id)
     }
-   
-    } 
+   /////////////now save the payment in the database
+   const payment ={
+    name: employee.name,
+    email:employee.email,
+    salary:employee.salary,
+    month:selectedMonth?(selectedMonth.getMonth() + 1).toString().padStart(2, '0') : '',
+    year:selectedYear?selectedYear.getFullYear().toString() : '',
+    transactionId:paymentIntent.id,
+    
+   }
+    const res= axiosSecure.post('/payments', payment)
+    if(res.data?.paymaentresult?.insertedId){
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Paid the salary successfully",
+        showConfirmButton: false,
+        timer: 1500
+      });
+    }
+    console.log('payment saved',res);
+  } 
 
     
     return (
@@ -91,7 +109,7 @@ const CheckOutForm = ({employee}) => {
      <label className="label">
     <span className="label-text font-bold">Choose the Month:</span>
   </label>
-      <DatePicker className='input input-bordered w-full max-w-xs'
+      <DatePicker className='input input-bordered w-full max-w-xs ' required
         selected={selectedMonth}
         onChange={handleMonthChange}
         showMonthYearPicker
@@ -101,8 +119,7 @@ const CheckOutForm = ({employee}) => {
      <label className="label">
     <span className="label-text  font-bold">Choose the Year:</span>
   </label>
-      <DatePicker className='input input-bordered w-full max-w-xs'
-        selected={selectedYear}
+      <DatePicker className='input input-bordered w-full max-w-xs' required        selected={selectedYear}
         onChange={handleYearChange}
         showYearPicker
         dateFormat="yyyy" />

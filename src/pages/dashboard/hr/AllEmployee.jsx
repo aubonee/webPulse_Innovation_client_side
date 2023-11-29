@@ -170,7 +170,7 @@ const AllEmployee = () => {
               </td>
             <td> {employee.bank_account_no}</td>
             <td>{employee.salary}</td>
-            <td>{employee.role}</td>
+           
             <td> <button className='btn text-white bg-purple-500'onClick={()=>document.getElementById(`my_modal_${employee._id}`).showModal()} disabled={employee.isVerified !== 'verified'}>Pay</button></td>
             <td> <Link to={`/dashboard/employeeDetail/${employee._id}`}  className='btn text-white bg-purple-500'>Details</Link></td>
         </tr>

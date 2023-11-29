@@ -64,6 +64,7 @@ const filteredItems = items.filter(
                 value={selectedMonth}
                 onChange={(e) => setSelectedMonth(e.target.value)}
               >
+            <option value=""> All</option>
             <option value="01">01</option>
             <option value="02">02</option>
             <option value="03">03</option>
