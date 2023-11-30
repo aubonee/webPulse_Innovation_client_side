@@ -58,7 +58,7 @@ const CheckOutForm = ({employee}) => {
     }
 
     
-  ///////////Duplicate payment entry checking
+ 
   const existingPayment = await axiosSecure.get('/payments', {
     params: {
       email: employee.email,
@@ -69,12 +69,22 @@ const CheckOutForm = ({employee}) => {
   });
   console.log(existingPayment.data);
 
-  if (existingPayment.data.length > 0) {
-    console.log('Payment already made for the selected month and year');
+  const matchPayment = existingPayment.data.filter(payment => {
+    
+    return (
+      payment.email === employee.email &&
+      payment.month === (selectedMonth ? (selectedMonth.getMonth() + 1).toString().padStart(2, '0') : '') &&
+      payment.year === (selectedYear ? selectedYear.getFullYear().toString() : '')
+    );
+  });
+  console.log(matchPayment)
+
+  if (matchPayment.length > 0) {
+   
     Swal.fire({
       position: "top-end",
       icon: "error",
-      title: "Payment already made for the selected month and year",
+      title: "Payment already made for this month ",
       showConfirmButton: false,
       timer: 1500
     });

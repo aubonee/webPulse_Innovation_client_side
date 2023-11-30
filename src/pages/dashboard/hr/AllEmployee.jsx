@@ -69,7 +69,7 @@ const AllEmployee = () => {
   const handleMakeUnVerified= employee =>{
     Swal.fire({
         title: "Are you sure?",
-        text: "You want to make this Employee Verified!",
+        text: "You want to make this Employee UnVerified!",
         icon: "success",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
