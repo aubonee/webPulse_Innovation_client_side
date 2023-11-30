@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import useAxiosSecure from '../../../hooks/UseAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import useUserData from '../../../hooks/UseUserData';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 const Progress = () => {
     const [users,refetch]=useUserData();
@@ -23,22 +25,21 @@ const Progress = () => {
 //   const filteredItems = selectedEmployee
 //   ? items.filter((item) => item.email === selectedEmployee)
 //   : items;
+const formattedSelectedMonth = selectedMonth
+  ? selectedMonth.toLocaleString('en-US', { month: '2-digit', year: 'numeric' })
+  : null;
 const filteredItems = items.filter(
     (item) =>
       (!selectedEmployee || item.email === selectedEmployee) &&
-      (!selectedMonth ||
-        new Date(item.selectedDate).getMonth() + 1 === Number(selectedMonth))
+      (!formattedSelectedMonth ||
+        new Date(item.selectedDate).toLocaleString('en-US', { month: '2-digit', year: 'numeric' }) === formattedSelectedMonth)
+      // (!selectedMonth ||
+        
+      //     new Date(item.selectedDate).toLocaleString('en-US', { month: '2-digit', year: 'numeric' }) === `0${selectedMonth}-${new Date(item.selectedDate).getFullYear()}`)
+        // new Date(item.selectedDate).toLocaleString('en-US', { month: '2-digit', year: 'numeric' }) )
+        // new Date(item.selectedDate).getMonth() + 1 === Number(selectedMonth))
   );
 
-
-   
-//   const dateString = '2023-11-07T18:00:00.000Z';
-//   const dateObject = new Date(dateString);
-  //const dateObject = new Date(items.selectedDate);
-
-// Get the month (0-indexed, where 0 represents January)
-// const month = dateObject.getMonth() + 1;
-// console.log(month)
     return (
         <div className='mt-8'>
             <div>
@@ -47,7 +48,8 @@ const filteredItems = items.filter(
 
                     <div>  
                     <label className='font-2xl font-bold mt-5 mr-2'>  Select Employee: 
-          <select className='input input-bordered font-2xl p-2  font-normal' value={selectedEmployee} onChange={(e) => setSelectedEmployee(e.target.value)}>
+           
+           <select className='input input-bordered font-2xl p-2  font-normal' value={selectedEmployee} onChange={(e) => setSelectedEmployee(e.target.value)}>
             <option value="">All Employees</option>
             {users.map(user => (
               <option key={user._id} value={user.email}>
@@ -59,26 +61,40 @@ const filteredItems = items.filter(
 
         <div>  
                     <label className='font-2xl font-bold mt-5 mr-2'>  Select Month: 
-                    <select
+                    <DatePicker
                 className='input input-bordered font-2xl p-2 font-normal'
-                value={selectedMonth}
-                onChange={(e) => setSelectedMonth(e.target.value)}
-              >
-            <option value=""> All</option>
-            <option value="01">01</option>
-            <option value="02">02</option>
-            <option value="03">03</option>
-            <option value="04">04</option>
-            <option value="05">05</option>
-            <option value="06">06</option>
-            <option value="07">07</option>
-            <option value="08">08</option>
-            <option value="09">09</option>
-            <option value="10">10</option>
-            <option value="11">11</option>
-            <option value="12">12</option>
-         
-          </select>
+                selected={selectedMonth}
+                onChange={(date) => {
+                  setSelectedMonth(date)
+                  console.log(selectedMonth);
+                }}
+                dateFormat="MM-yyyy"
+                showMonthYearPicker
+              />
+
+                    {/* <select
+      className='input input-bordered font-2xl p-2 font-normal'
+      value={selectedMonth}
+      // onChange={(e) => setSelectedMonth(e.target.value)} 
+      onChange={(e) => {
+        setSelectedMonth(e.target.value);
+        console.log(selectedMonth); // Add this line
+      }}
+    >
+      <option value="">All</option>
+      {Array.from({ length: 12 }, (_, index) => {
+        const monthValue = (index + 1).toString().padStart(2, '0');
+        const yearValue = new Date().getFullYear();
+        const monthYearValue = `${monthValue}-${yearValue}`;
+        
+        return (
+          <option key={monthValue} value={monthYearValue}>
+            {`${monthValue}-${yearValue}`}
+          </option>
+        );
+      })}
+    </select> */}
+          
         </label></div>
                 </form>
             </div>

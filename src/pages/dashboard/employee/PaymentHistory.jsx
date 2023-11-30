@@ -3,6 +3,7 @@ import useAxiosSecure from '../../../hooks/UseAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import { AuthContext } from '../../../providers/AuthProvider';
 import { useContext } from 'react';
+import SectionTitle from '../../../components/shared/sectinTitle/SectionTitle';
 
 const PaymentHistory = () => {
     const {user} = useContext(AuthContext);
@@ -18,7 +19,9 @@ const PaymentHistory = () => {
   })
     return (
         <div>
-            Payment History
+           <div className='w-full pb-10'>
+            <SectionTitle heading="Payment History" subHeading="The payments you got from the company"></SectionTitle>
+           </div>
             <table className="table  w-full mt-5">
     {/* head */}
     <thead>
