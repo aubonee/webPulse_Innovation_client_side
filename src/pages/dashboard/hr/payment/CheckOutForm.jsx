@@ -56,6 +56,32 @@ const CheckOutForm = ({employee}) => {
         console.log('payment method ', paymentMethod)
        setError(' ');
     }
+
+    
+  ///////////Duplicate payment entry checking
+  const existingPayment = await axiosSecure.get('/payments', {
+    params: {
+      email: employee.email,
+      month: selectedMonth ? (selectedMonth.getMonth() + 1).toString().padStart(2, '0') : '',
+      year: selectedYear ? selectedYear.getFullYear().toString() : '',
+    },
+    
+  });
+  console.log(existingPayment.data);
+
+  if (existingPayment.data.length > 0) {
+    console.log('Payment already made for the selected month and year');
+    Swal.fire({
+      position: "top-end",
+      icon: "error",
+      title: "Payment already made for the selected month and year",
+      showConfirmButton: false,
+      timer: 1500
+    });
+    return;
+  }
+
+
     ///confirm payment
     const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(clientSecret, {
       payment_method: {
@@ -69,6 +95,7 @@ const CheckOutForm = ({employee}) => {
     })
     if (confirmError) {
       console.log('confirm error',confirmError)
+      
   }
     else{
       console.log('payment intent', paymentIntent)
@@ -86,8 +113,9 @@ const CheckOutForm = ({employee}) => {
     transactionId:paymentIntent.id,
     
    }
-    const res= axiosSecure.post('/payments', payment)
-    if(res.data?.paymaentresult?.insertedId){
+    const res= await axiosSecure.post('/payments', payment)
+    console.log(res.data)
+    if(res.data){
       Swal.fire({
         position: "top-end",
         icon: "success",

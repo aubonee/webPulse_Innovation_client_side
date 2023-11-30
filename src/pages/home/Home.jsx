@@ -1,4 +1,5 @@
 
+import { Helmet } from 'react-helmet-async';
 import AboutUs from '../../components/home/aboutUs/AboutUs';
 import Banner from '../../components/home/banner/Banner';
 import Services from '../../components/home/services/Services';
@@ -8,7 +9,10 @@ import WhyChooseUs from '../../components/home/whyChooseUs/WhyChooseUs';
 
 const Home = () => {
     return (
-        <div>
+        <div className='mx-auto'>
+            <Helmet>
+                <title>WebPulse | Home</title>
+            </Helmet>
            <Banner></Banner>
          
            <AboutUs></AboutUs>

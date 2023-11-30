@@ -20,8 +20,11 @@ const EmployeeDetail = () => {
    
      }
    })
-   
- 
+    
+   const dataForChart = payments.map(payment => ({
+    ...payment,
+    monthYear: `${payment.month}-${payment.year}`, // Combine month and year
+  }));
     
     return (
 
@@ -43,13 +46,13 @@ const EmployeeDetail = () => {
           
            <div>
            <div>
-            <p>text</p>
+           
              <ResponsiveContainer width={800} height={500}>
-        <BarChart  data={payments}>
-        <XAxis dataKey="month" />
+        <BarChart  data={dataForChart}>
+        <XAxis dataKey="monthYear" />
       <YAxis />
       <Bar dataKey="salary" fill="#8884d8"  label={{ position: 'top' }}>
-        {payments.map((entry, index) => (
+        {dataForChart.map((entry, index) => (
           <Cell key={`cell-${index}`} fill={colors[index % 20]} />
         ))}
       </Bar>
