@@ -22,7 +22,7 @@ const PaymentHistory = () => {
            <div className='w-full pb-10'>
             <SectionTitle heading="Payment History" subHeading="The payments you got from the company"></SectionTitle>
            </div>
-            <table className="table  w-full mt-5">
+            <table className=" mb-10 pb-6 table  w-full mt-5">
     {/* head */}
     <thead>
       <tr>

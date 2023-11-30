@@ -101,14 +101,14 @@ const AllEmployee = () => {
 
 }
     return (
-        <div className='mx-auto w-full'>
+        <div className='mx-auto w-full pb-12'>
             <SectionTitle heading="All Employee" subHeading="All the verified & unverified employee list"></SectionTitle>
              <div className='flex justify-evenly my-4 text-center'>
          
             </div>
 
             <div className="overflow-x-auto">
-  <table className="table mx-5 w-full mt-5">
+  <table className="table mx-5 w-full mt-5 mb-10 pb-6">
     {/* head */}
     <thead>
       <tr>

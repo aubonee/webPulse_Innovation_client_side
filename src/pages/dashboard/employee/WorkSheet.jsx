@@ -64,7 +64,7 @@ const WorkSheet = () => {
 
 
   return (
-    <div>
+    <div className='pb-12'>
       <div>
       <form onSubmit={handleWorksheet} className='py-5 my-5 mx-auto  bg-[#b057a3] flex items-center justify-around' action="">
 
@@ -74,7 +74,7 @@ const WorkSheet = () => {
     <span className="label-text my-1  text-white font-bold ">Choose a Task:</span>
   </label>
  
-  <select className=' mt-2 input input-bordered text-black' name="task" id="cars" required defaultValue="default">
+  <select className=' mt-2 input input-bordered text-black' name="task" id="task" required defaultValue="default">
     <option disabled value="default" >select one</option>
     <option value="sales">Sales</option>
     <option value="support">Support</option>
@@ -111,7 +111,7 @@ const WorkSheet = () => {
       <h2 className='text-3xl'>Total items : {items.length}</h2>
       <h1>Table</h1>
       <div>
-      <table className="table  w-full mt-5">
+      <table className="table mb-12 pb-6 w-full mt-5">
     {/* head */}
     <thead>
       <tr>

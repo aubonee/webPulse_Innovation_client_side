@@ -5,14 +5,14 @@ import SectionTitle from '../../components/shared/sectinTitle/SectionTitle';
 
 const ContactUs = () => {
     return (
-        <div className='mx-auto py-16 min-h-[100vh] max-h-full max-w-screen-xl'>
-            <div className='w-full'>
+        <div className='mx-auto py-16 min-h-[100vh] max-h-full max-w-full lg:max-w-screen-xl'>
+            <div className='w-[full]'>
                 <SectionTitle heading="Get in Touch" subHeading=" Reach Out for Collaborations, Inquiries, or Just to Say Hello!"></SectionTitle>
             </div>
             <div className='mx-auto flex justify-center items-center '>
            
-            <div className=" mx-auto flex flex-col lg:flex-row  w-3/4 min-h-[400px]">
-                <div className=' w-11/12 md:w-5/6 lg:w-1/2 pt-12 pb-10 flex flex-col bg-[#b057a3] h-full'> 
+            <div className=" mx-auto flex flex-col lg:flex-row bg-[#b057a3] w-3/4 min-h-[450px]">
+                <div className=' w-11/12 md:w-5/6 lg:w-1/2 pt-12 pb-10 flex flex-col  h-full'> 
                 <div className='flex h-[70px] ml-4 mt-5 '>
                     <div className=' flex justify-center items-center mt-1 text-5xl text-white border-2 border-white p-2 mr-3'>  <IoLocation /></div>
                     <div >
@@ -30,7 +30,7 @@ const ContactUs = () => {
                    
                 </div>
             
-                <div className='w-11/12 md:w-5/6 lg:w-1/2  px-6 pt-12 pb-10 bg-[#d07bc3] h-full'>
+                <div className='w-full  lg:w-1/2  px-6 pt-12 pb-10 min-h-[450px] bg-[#d07bc3] h-full'>
                     <form >
                     
                     <div className='form-control'>

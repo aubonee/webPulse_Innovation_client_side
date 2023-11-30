@@ -21,10 +21,7 @@ const Progress = () => {
       }
     })
 
-    // Apply filter based on selected employee's email
-//   const filteredItems = selectedEmployee
-//   ? items.filter((item) => item.email === selectedEmployee)
-//   : items;
+
 const formattedSelectedMonth = selectedMonth
   ? selectedMonth.toLocaleString('en-US', { month: '2-digit', year: 'numeric' })
   : null;
@@ -33,15 +30,11 @@ const filteredItems = items.filter(
       (!selectedEmployee || item.email === selectedEmployee) &&
       (!formattedSelectedMonth ||
         new Date(item.selectedDate).toLocaleString('en-US', { month: '2-digit', year: 'numeric' }) === formattedSelectedMonth)
-      // (!selectedMonth ||
-        
-      //     new Date(item.selectedDate).toLocaleString('en-US', { month: '2-digit', year: 'numeric' }) === `0${selectedMonth}-${new Date(item.selectedDate).getFullYear()}`)
-        // new Date(item.selectedDate).toLocaleString('en-US', { month: '2-digit', year: 'numeric' }) )
-        // new Date(item.selectedDate).getMonth() + 1 === Number(selectedMonth))
+     
   );
 
     return (
-        <div className='mt-8'>
+        <div className='mt-8 pb-12'>
             <div>
 
                 <form className='flex justify-around ' >
@@ -72,28 +65,7 @@ const filteredItems = items.filter(
                 showMonthYearPicker
               />
 
-                    {/* <select
-      className='input input-bordered font-2xl p-2 font-normal'
-      value={selectedMonth}
-      // onChange={(e) => setSelectedMonth(e.target.value)} 
-      onChange={(e) => {
-        setSelectedMonth(e.target.value);
-        console.log(selectedMonth); // Add this line
-      }}
-    >
-      <option value="">All</option>
-      {Array.from({ length: 12 }, (_, index) => {
-        const monthValue = (index + 1).toString().padStart(2, '0');
-        const yearValue = new Date().getFullYear();
-        const monthYearValue = `${monthValue}-${yearValue}`;
-        
-        return (
-          <option key={monthValue} value={monthYearValue}>
-            {`${monthValue}-${yearValue}`}
-          </option>
-        );
-      })}
-    </select> */}
+   
           
         </label></div>
                 </form>
