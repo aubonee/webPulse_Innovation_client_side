@@ -1,5 +1,5 @@
-import { useContext,  } from 'react';
-
+import { useContext, useEffect, useRef, useState } from 'react';
+import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import { AuthContext } from '../../providers/AuthProvider';
 import Swal from 'sweetalert2';
 import {  Link, useLocation, useNavigate } from 'react-router-dom';
@@ -8,7 +8,8 @@ import { Helmet } from 'react-helmet-async';
 
 const Login = () => {
 
-
+  const [disabled,setDisabled]= useState(true);
+  const[user,setUser] =useState(null); 
 
     const {signIn} =useContext(AuthContext);
     const navigate = useNavigate();
@@ -16,6 +17,9 @@ const Login = () => {
   //  const from = location.state?.from?.pathname || "/";
 
     
+  useEffect(()=>{
+    loadCaptchaEnginge(6); 
+},[])
 
     const handleLogin=event=>{
         event.preventDefault();
@@ -53,6 +57,15 @@ const Login = () => {
     ) 
    
     }
+    const handleValidateCaptcha = (e) => {
+      const user_captcha_value = e.target.value;
+      if (validateCaptcha(user_captcha_value)) {
+          setDisabled(false);
+      }
+      else {
+          setDisabled(true)
+      }
+  }
     return (
         <div className="hero  w-full min-h-screen ">
             <Helmet>
@@ -77,6 +90,16 @@ const Login = () => {
       </label>
       <input type="password" name='password' placeholder="password" className="input input-bordered text-black" required />
      
+    </div>
+    <div  className="form-control ">
+      <label className="label">
+        {/* <span className="label-text">Captcha</span> */}
+        <LoadCanvasTemplate />
+      </label>
+      <input type="text" onBlur={handleValidateCaptcha}  name="captcha" placeholder="captcha" className="input input-bordered" />
+ 
+
+   {/* <button onBlur={handleValidateCaptcha}  className='btn btn-outline btn-xs m-2 py-2'  required>Validate</button> */}
     </div>
  
         <div className="form-control mt-6">

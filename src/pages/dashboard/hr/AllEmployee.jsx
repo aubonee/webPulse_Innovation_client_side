@@ -173,6 +173,7 @@ const AllEmployee = () => {
            
             <td> <button className='btn text-white bg-purple-500'onClick={()=>document.getElementById(`my_modal_${employee._id}`).showModal()} disabled={employee.isVerified !== 'verified'}>Pay</button></td>
             <td> <Link to={`/dashboard/employeeDetail/${employee._id}`}  className='btn text-white bg-purple-500'>Details</Link></td>
+            <td> <Link to={`/dashboard/salaryUpdate/${employee._id}`}  className='btn text-white bg-purple-500'>Increment Salary</Link></td>
         </tr>
         )
      } 

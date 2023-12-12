@@ -19,6 +19,7 @@ import HrRoute from "./HrRoute";
 import Progress from "../pages/dashboard/hr/Progress";
 import EmployeeRoute from "./EmployeeRoute";
 import PaymentHistory from "../pages/dashboard/employee/PaymentHistory";
+import SalaryUpdate from "../pages/dashboard/hr/SalaryUpdate";
 
   export const router = createBrowserRouter([
     {
@@ -77,6 +78,12 @@ import PaymentHistory from "../pages/dashboard/employee/PaymentHistory";
             {
                 path: 'employeeDetail/:id',
                 element:<HrRoute><EmployeeDetail></EmployeeDetail></HrRoute> ,
+                loader: ({params}) => fetch(`https://assignment-12-server-side-five.vercel.app/employeeDetail/${params.id}`)
+      
+            },
+            {
+                path: 'salaryUpdate/:id',
+                element:<HrRoute><SalaryUpdate></SalaryUpdate></HrRoute> ,
                 loader: ({params}) => fetch(`https://assignment-12-server-side-five.vercel.app/employeeDetail/${params.id}`)
       
             }
