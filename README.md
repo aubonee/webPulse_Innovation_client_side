@@ -20,6 +20,8 @@
 - 🔍 **Admin Controls:**
   - Admin has access to all verified employees' and HRs' information.
   - Admin can promote an employee to HR and has the authority to fire any HR or employee.
+  - Admin email: tawsif@gmail.com
+  - Admin password: Abcd$12
 
 🚀 **Technologies Used:**
   - Frontend: React, Tailwind CSS
