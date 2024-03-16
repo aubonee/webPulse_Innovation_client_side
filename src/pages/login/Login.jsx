@@ -4,6 +4,8 @@ import { AuthContext } from '../../providers/AuthProvider';
 import Swal from 'sweetalert2';
 import {  Link, useLocation, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import Lottie from 'lottie-react';
+import Loginjson from "./Login.json";
 
 
 const Login = () => {
@@ -67,52 +69,102 @@ const Login = () => {
       }
   }
     return (
-        <div className="hero  w-full min-h-screen ">
-            <Helmet>
+      <div className='min-h-screen'>
+         <Helmet>
                 <title>WebPulse | Login</title>
             </Helmet>
-  <div className="hero-content w-full md:w-5/6 lg:w-1/2  bg-[#b057a3] flex-col ">
-    <div className="text-center w-1/2">
-      <h1 className="text-5xl font-bold text-white">Login now!</h1>
-      
-    </div>
-    <div className="  p-6 w-full  ">
-      <form onSubmit={handleLogin} className="w-full">
-      <div  className="form-control ">
-      <label className="label">
-        <span className="label-text text-white">Email</span>
-      </label>
-      <input type="email" name='email' placeholder="email" className="input input-bordered" required />
-    </div>
-    <div className="form-control">
-      <label className="label">
-        <span className="label-text text-white">Password</span>
-      </label>
-      <input type="password" name='password' placeholder="password" className="input input-bordered text-black" required />
+            <div className=" ">
+       {/* <div className="mx-4 mt-4">
+      <Link href="/" className="text-rose-600 text-2xl mx-10"> <FontAwesomeIcon icon={faTentArrowTurnLeft} className="w-10 h-10"/> </Link>
+      </div>  */}
+      <div className="min-h-screen ">
+      <h1 className="text-3xl mt-10 md:text-5xl font-bold text-center text-[#5f9fff] py-10 ">
+        Login
+      </h1>
      
-    </div>
-    <div  className="form-control ">
+      <div className="flex flex-col md:flex-row items-center justify-center gap-4  mb-20 ">
+        <div className="w-1/3">
+          <Lottie animationData={Loginjson} loop={true} />
+        </div>
+        <div className="w-2/3 max-w-md p-8 space-y-3 rounded-xl ">
+          <form
+            onSubmit={handleLogin} 
+            action=""
+            className="space-y-3"
+          >
+            <div className="space-y-1 text-sm">
+              <label  className="block text-[#5f9fff]">
+                User Email
+              </label>
+              <input
+                type="email"
+                name="email"
+               
+                id="email"
+                placeholder="User Email"
+                className="w-full px-4 py-3 rounded-md bg-[#dee4f2]"
+              />
+            </div>
+            <div className="space-y-1 text-sm">
+              <label  className="block text-[#5f9fff]">
+                Password
+              </label>
+              <input
+                type="password"
+                name="password"
+                id="password"
+              
+                placeholder="Password"
+                className="w-full px-4 py-3 rounded-md bg-[#dee4f2]"
+              />
+              <div className="flex justify-end text-xs text-[#5f9fff]">
+                
+              </div>
+            </div>
+            <div  className="space-y-1 text-sm">
       <label className="label">
         {/* <span className="label-text">Captcha</span> */}
-        <LoadCanvasTemplate />
+        <LoadCanvasTemplate className="border-2 border-blue-500" />
       </label>
-      <input type="text" onBlur={handleValidateCaptcha}  name="captcha" placeholder="captcha" className="input input-bordered" />
+      <input type="text" onBlur={handleValidateCaptcha}  name="captcha" placeholder="captcha" className="w-full px-4 py-3 rounded-md bg-[#dee4f2]"/>
  
 
-   {/* <button onBlur={handleValidateCaptcha}  className='btn btn-outline btn-xs m-2 py-2'  required>Validate</button> */}
+
     </div>
- 
-        <div className="form-control mt-6">
-         
-          <input className="btn bg-black text-white"  disabled={false} type="submit" value="Login"/>
+            <button className="block w-full p-3  text-center rounded bg-[#5f9fff] text-white">
+              Log in
+            </button>
+          </form>
+          <div className="flex items-center pt-4 space-x-1">
+            <div className="flex-1 h-px sm:w-16"></div>
+            
+            <div className="flex-1 h-px sm:w-16"></div>
+          </div>
+          <div className="flex justify-center space-x-4">
+          
+          </div>
+          <p className="text-xs text-center sm:px-6 ">
+            Don&apos;t have an account?
+            <Link
+            to="/register"
+              rel="noopener noreferrer"
+            
+              className="underline text-[#5f9fff]"
+            >
+              Register
+            </Link>
+          </p>
+
+          
         </div>
-
-      </form>
-      <p className="py-3 text-white"><small>Don't have an account? <br /> <Link to="/register" className='btn bg-black w-full text-white '>Sign Up </Link></small></p>
-     
+      </div>
     </div>
-  </div>
-</div>
+    </div>
+
+
+       
+      </div>
+      
     );
 };
 

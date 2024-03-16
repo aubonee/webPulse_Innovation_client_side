@@ -6,6 +6,7 @@ import Services from '../../components/home/services/Services';
 
 import Testimonials from '../../components/home/testimonials/Testimonials';
 import WhyChooseUs from '../../components/home/whyChooseUs/WhyChooseUs';
+import FAQ from '../../components/home/faq/FAQ';
 
 const Home = () => {
     return (
@@ -17,6 +18,7 @@ const Home = () => {
          
            <AboutUs></AboutUs>
            <Services></Services>
+           <FAQ></FAQ>
            <Testimonials></Testimonials>
            <WhyChooseUs></WhyChooseUs>
         </div>

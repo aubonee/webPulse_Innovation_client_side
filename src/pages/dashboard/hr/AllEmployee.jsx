@@ -9,7 +9,8 @@ import  { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import MonthPicker from 'react-month-picker';
-
+import { FaInfo, FaCommentDollar, } from "react-icons/fa";
+import { FaArrowUpRightDots } from "react-icons/fa6";
 import {Elements} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
 import CheckOutForm from './payment/CheckOutForm';
@@ -108,21 +109,18 @@ const AllEmployee = () => {
             </div>
 
             <div className="overflow-x-auto">
-  <table className="table mx-5 w-full mt-5 mb-10 pb-6">
+  <table className="table table-zebra table-sm mx-5 w-full mt-5 mb-10 pb-6">
     {/* head */}
     <thead>
       <tr>
         <th>
        #
         </th>
-        <th> Name</th>
-        <th> Email</th>
-        <th>Verified Status</th>
-      
-        <th>Salary</th>
-        <th>Role</th>
-        <th>Action</th>
-        <th>Action</th>
+        <th>User Info</th>
+        <th>Change User Status</th>
+        <th>Pay Salary</th>
+        <th>Details</th>
+        <th>Increase Salary</th>
 
       </tr>
     </thead>
@@ -132,8 +130,8 @@ const AllEmployee = () => {
         employees.map((employee,index)=>
         <tr key={employee._id}>
             <th> {index+1} </th>
-            <td> {employee.name}</td>
-            <td> {employee.email}</td>
+            <td> {employee.name} <br /> {employee.email}</td>
+          
             <td>
               {employee.isVerified == 'verified'? <button onClick={()=>handleMakeUnVerified(employee)}  className="btn  p-3 py-1 my-2 text-green-500 text-lg "><FaCheck/> </button> : <button onClick={()=>handleMakeVerified(employee)}  className="btn  p-3 py-1 my-2  text-lg text-red-700"><ImCross /> </button>}
                
@@ -168,12 +166,10 @@ const AllEmployee = () => {
   </dialog>
     </div>
               </td>
-            <td> {employee.bank_account_no}</td>
-            <td>{employee.salary}</td>
            
-            <td> <button className='btn text-white bg-purple-500'onClick={()=>document.getElementById(`my_modal_${employee._id}`).showModal()} disabled={employee.isVerified !== 'verified'}>Pay</button></td>
-            <td> <Link to={`/dashboard/employeeDetail/${employee._id}`}  className='btn text-white bg-purple-500'>Details</Link></td>
-            <td> <Link to={`/dashboard/salaryUpdate/${employee._id}`}  className='btn text-white bg-purple-500'>Increment Salary</Link></td>
+            <td> <button className='btn tooltip  text-white bg-[#5f9fff] hover:bg-blue-500' data-tip="Pay Salary" onClick={()=>document.getElementById(`my_modal_${employee._id}`).showModal()} disabled={employee.isVerified !== 'verified'}><FaCommentDollar /></button></td>
+            <td> <button className='tooltip text-white' data-tip="Details Info"> <Link to={`/dashboard/employeeDetail/${employee._id}`}  className='btn text-white bg-[#fdc854] hover:bg-yellow-600' ><FaInfo /></Link></button> </td>
+            <td> <button className='tooltip text-white' data-tip="Increase Salary"> <Link to={`/dashboard/salaryUpdate/${employee._id}`}  className='btn text-white bg-[#48753a] hover:bg-green-800'disabled={employee.isVerified !== 'verified'}><FaArrowUpRightDots /></Link></button></td>
         </tr>
         )
      } 
