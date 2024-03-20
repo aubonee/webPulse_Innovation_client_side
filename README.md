@@ -30,7 +30,7 @@
 
 Explore the functionalities and enhance your company's employee management seamlessly!
 
-# Live Link:  https://messy-person.surge.sh
+# Live Link:  https://stalwart-chimera-e2bcfc.netlify.app
 
 
 # React + Vite
