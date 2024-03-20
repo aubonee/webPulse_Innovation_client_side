@@ -19,26 +19,26 @@ const Navbar = () => {
     .catch()
   }
     const navItems = <>
-    <li><NavLink to="/" className={({ isActive, isPending }) => isPending ? "pending" : isActive ? " text-[#db23c0] text-2xl font-bold underline underline-offset-8" : "text-[#db23c0] text-2xl font-bold"}> Home</NavLink></li>
-    <li><NavLink to="/contactus" className={({ isActive, isPending }) => isPending ? "pending" : isActive ? " text-[#db23c0] text-2xl font-bold underline underline-offset-8" : "text-[#db23c0] text-2xl font-bold"}> Contact us</NavLink></li>
-    <li>    {   user ?" ":<NavLink className={({ isActive, isPending }) => isPending ? "pending" : isActive ? " text-[#db23c0] text-2xl font-bold underline underline-offset-8" : "text-[#db23c0] text-2xl font-bold"}to="/login">Login</NavLink>}</li>
+    <li><NavLink to="/" className={({ isActive, isPending }) => isPending ? "pending" : isActive ? " text-[#5F9FFF] text-2xl font-semibold underline underline-offset-8" : "text-[#5F9FFF] text-2xl font-semibold"}> Home</NavLink></li>
+    <li><NavLink to="/contactus" className={({ isActive, isPending }) => isPending ? "pending" : isActive ? " text-[#5F9FFF] text-2xl font-semibold underline underline-offset-8" : "text-[#5F9FFF] text-2xl font-semibold"}> Contact us</NavLink></li>
+    <li>    {   user ?" ":<NavLink className={({ isActive, isPending }) => isPending ? "pending" : isActive ? " text-[#5F9FFF] text-2xl font-semibold underline underline-offset-8" : "text-[#5F9FFF] text-2xl font-semibold"}to="/login">Login</NavLink>}</li>
     
         
         { 
-            user && isEmployee &&<li><NavLink to="/dashboard/worksheet" className={({ isActive, isPending }) =>  isPending ? "pending" : isActive ? " text-[#db23c0] text-2xl font-bold underline underline-offset-8" : "text-[#db23c0] text-2xl font-bold"}> Dashboard</NavLink></li>
+            user && isEmployee &&<li><NavLink to="/dashboard/worksheet" className={({ isActive, isPending }) =>  isPending ? "pending" : isActive ? " text-[#5F9FFF] text-2xl font-semibold underline underline-offset-8" : "text-[#5F9FFF] text-2xl font-semibold"}> Dashboard</NavLink></li>
         }
         {
-            user && isHr && <li><NavLink to="/dashboard/allemployee" className={({ isActive, isPending }) =>  isPending ? "pending" : isActive ? " text-[#db23c0] text-2xl font-bold underline underline-offset-8" : "text-[#db23c0] text-2xl font-bold"}> Dashboard</NavLink></li>
+            user && isHr && <li><NavLink to="/dashboard/allemployee" className={({ isActive, isPending }) =>  isPending ? "pending" : isActive ? " text-[#5F9FFF] text-2xl font-semibold underline underline-offset-8" : "text-[#5F9FFF] text-2xl font-semibold"}> Dashboard</NavLink></li>
         }
           
         {
-            user && isAdmin && <li><NavLink to="/dashboard/verifiedemployee" className={({ isActive, isPending }) =>  isPending ? "pending" : isActive ? " text-[#db23c0] text-2xl font-bold underline underline-offset-8" : "text-[#db23c0] text-2xl font-bold"}> Dashboard</NavLink></li>
+            user && isAdmin && <li><NavLink to="/dashboard/verifiedemployee" className={({ isActive, isPending }) =>  isPending ? "pending" : isActive ? " text-[#5F9FFF] text-2xl font-semibold underline underline-offset-8" : "text-[#5F9FFF] text-2xl font-semibold"}> Dashboard</NavLink></li>
         }
   
 
   </>
     return (
-        <div className="navbar z-20 bg-base-100 shadow-lg fixed">
+        <div className="navbar z-20 bg-base-100 shadow-lg fixed font-serif ">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -48,7 +48,7 @@ const Navbar = () => {
             {navItems}
             </ul>
           </div>
-          <a className="py-2 text-white bg-[#db23c0] px-2 text-xl">webPulse Innovation</a>
+          <a className="py-2 text-white bg-[#5F9FFF] px-2 text-xl">webPulse Innovation</a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
@@ -63,7 +63,7 @@ const Navbar = () => {
      
         </div>
         <div> {
-        user && <h2 className='text-[#db23c0] text-2xl font-bold'>{user.displayName}</h2> 
+        user && <h2 className='text-[#5F9FFF] text-2xl font-semibold'>{user.displayName}</h2> 
       }</div>
       </div>
       <div>
@@ -84,7 +84,7 @@ const Navbar = () => {
      
       {
     user && 
-    <button onClick={handleSignOut} className="text-sm  my-2 mx-2 btn rounded-none bg-[#db23c0]  border-2 border-spacing-y-3 border-spacing-x-7 text-[#FFFFFA] border-[#db23c0]">Sign Out</button>
+    <button onClick={handleSignOut} className="text-sm  my-2 mx-2 btn rounded-none bg-[#5F9FFF]  border-2 border-spacing-y-3 border-spacing-x-7 text-[#FFFFFA] border-[#5F9FFF]">Sign Out</button>
   
   }
       </ul>

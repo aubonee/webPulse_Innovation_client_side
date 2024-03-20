@@ -1,4 +1,4 @@
-import React from 'react';
+
 import SectionTitle from '../../shared/sectinTitle/SectionTitle';
 import aboutImg from '../../../assets/5.png'
 const AboutUs = () => {

@@ -16,11 +16,14 @@ const Home = () => {
             </Helmet>
            <Banner></Banner>
          
-           <AboutUs></AboutUs>
+         
            <Services></Services>
            <FAQ></FAQ>
-           <Testimonials></Testimonials>
+           
            <WhyChooseUs></WhyChooseUs>
+           <AboutUs></AboutUs>
+           <Testimonials></Testimonials>
+          
         </div>
     );
 };

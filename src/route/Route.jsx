@@ -20,6 +20,7 @@ import Progress from "../pages/dashboard/hr/Progress";
 import EmployeeRoute from "./EmployeeRoute";
 import PaymentHistory from "../pages/dashboard/employee/PaymentHistory";
 import SalaryUpdate from "../pages/dashboard/hr/SalaryUpdate";
+import ManageEmployee from "../pages/dashboard/hr/ManageEmployee";
 
   export const router = createBrowserRouter([
     {
@@ -55,6 +56,11 @@ import SalaryUpdate from "../pages/dashboard/hr/SalaryUpdate";
             {
                 path: "allemployee",
                 element:<HrRoute><AllEmployee></AllEmployee></HrRoute> 
+
+            },
+            {
+                path: "manageEmployee",
+                element:<HrRoute><ManageEmployee></ManageEmployee></HrRoute> 
 
             },
             {

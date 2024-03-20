@@ -1,5 +1,5 @@
 import Lottie from 'lottie-react';
-import React from 'react';
+
 import FAQAni from './FAQ.json'
 
 const FAQ = () => {
@@ -8,7 +8,7 @@ const FAQ = () => {
             <div className="w-full lg:w-3/5 flex flex-col justify-center text-center lg:text-left">
             <section className="dark:bg-gray-800 dark:text-gray-100">
 	<div className="container flex flex-col justify-center px-4 py-8 mx-auto md:p-8">
-		<h2 className="text-2xl font-semibold sm:text-4xl">Frequently Asked Questions</h2>
+		<h2 className="text-3xl text-[#5F9FFF] uppercase py-4 font-serif font-semibold">Frequently Asked Questions</h2>
 		<p className="mt-4 mb-8 dark:text-gray-400">Get Answers to Common Queries About Our Employee Management System</p>
 		<div className="space-y-4">
 			<details className="w-full border rounded-lg">

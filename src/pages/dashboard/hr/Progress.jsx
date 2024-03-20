@@ -34,15 +34,15 @@ const filteredItems = items.filter(
   );
 
     return (
-        <div className='mt-8 pb-12'>
+        <div className='mt-8 pb-12 font-serif'>
             <div>
 
                 <form className='flex justify-around ' >
 
                     <div>  
-                    <label className='font-2xl font-bold mt-5 mr-2'>  Select Employee: 
+                    <label className='font-2xl  font-bold mt-5 mr-2'>  Select Employee: 
            
-           <select className='input input-bordered font-2xl p-2  font-normal' value={selectedEmployee} onChange={(e) => setSelectedEmployee(e.target.value)}>
+           <select className='input input-bordered ml-2  rounded-none font-2xl p-2  font-normal' value={selectedEmployee} onChange={(e) => setSelectedEmployee(e.target.value)}>
             <option value="">All Employees</option>
             {users.map(user => (
               <option key={user._id} value={user.email}>
@@ -55,7 +55,7 @@ const filteredItems = items.filter(
         <div>  
                     <label className='font-2xl font-bold mt-5 mr-2'>  Select Month: 
                     <DatePicker
-                className='input input-bordered font-2xl p-2 font-normal'
+                className='input ml-2 input-bordered rounded-none font-2xl p-2 font-normal'
                 selected={selectedMonth}
                 onChange={(date) => {
                   setSelectedMonth(date)
@@ -72,11 +72,11 @@ const filteredItems = items.filter(
             </div>
           
             <div className='mt-5'>
-      <table className="table  w-full mt-5">
+      <table className="table table-zebra table-sm mx-5 w-full mt-5 mb-10 pb-6 ">
     {/* head */}
     <thead className='text-2xl'>
       <tr>
-        <th className='font-3xl '> # </th>
+        <th className='font-3xl '> No. </th>
         <th className='font-5xl'>Task</th>
         <th> Hour</th>
         <th>Task Date</th>
