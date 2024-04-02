@@ -43,12 +43,14 @@ const Testimonials = () => {
       }
   })
     return (
-        <div className=' mx-auto w-1/2'>
+        <div className=' mx-auto w-full'>
                  <SectionTitle
             subHeading="What Our Client Say"
             heading={'Testimonials'}
         ></SectionTitle>
-                 <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
+             <div className='mx-auto w-11/12 md:w-5/6 lg:1/2'>
+
+             <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
 
 {
     reviews.map(review => <SwiperSlide
@@ -69,6 +71,7 @@ const Testimonials = () => {
     </SwiperSlide>)
 }
 </Swiper>
+             </div>
         </div>
     );
 };

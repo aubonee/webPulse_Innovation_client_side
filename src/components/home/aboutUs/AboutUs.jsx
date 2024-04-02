@@ -3,7 +3,7 @@ import SectionTitle from '../../shared/sectinTitle/SectionTitle';
 import aboutImg from '../../../assets/5.png'
 const AboutUs = () => {
     return (
-    <div className='mx-auto max-w-screen-xl'>
+    <div className='w-11/12 mx-auto max-w-screen-xl'>
         <SectionTitle heading="About Us" subHeading="Crafting Digital Excellence, One Code at a Time"></SectionTitle>
         <div className=' flex flex-col lg:flex-row-reverse'>
             <div className='w-11/12 lg:w-1/2'>

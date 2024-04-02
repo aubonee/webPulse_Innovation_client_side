@@ -11,11 +11,11 @@ const Footer = () => {
   </aside> 
   <nav>
     <header className="footer-title">QUICK LINKS</header> 
-    <div className="grid grid-flow-col gap-4">
-    <li><Link to="/contactus" > Contact us</Link></li>
-    <li><Link to="/" > About us</Link></li>
-    <li><Link to="/" > Services</Link></li>
-    <li><Link to="/" > Why Choose Us</Link></li>
+    <div className="">
+    <li className="list-none"><Link to="/contactus" > Contact us</Link></li>
+    <li className="list-none"><Link to="/" > About us</Link></li>
+    <li className="list-none"><Link to="/" > Services</Link></li>
+    <li className="list-none"><Link to="/" > Why Choose Us</Link></li>
       
     </div>
   </nav>

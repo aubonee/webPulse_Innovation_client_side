@@ -64,9 +64,9 @@ const WorkSheet = () => {
 
 
   return (
-    <div className='pb-12'>
+    <div className='pb-12 font-serif '>
       <div>
-      <form onSubmit={handleWorksheet} className='py-5 my-5 mx-auto  bg-[#b057a3] flex items-center justify-around' action="">
+      <form onSubmit={handleWorksheet} className='py-5 my-5 mx-auto  bg-[#FDC854] flex items-center justify-around' action="">
 
 <div className="form-control">
 
@@ -74,7 +74,7 @@ const WorkSheet = () => {
     <span className="label-text my-1  text-white font-bold ">Choose a Task:</span>
   </label>
  
-  <select className=' mt-2 input input-bordered text-black' name="task" id="task" required defaultValue="default">
+  <select className=' mt-2 input input-bordered text-black  rounded-none' name="task" id="task" required defaultValue="default">
     <option disabled value="default" >select one</option>
     <option value="sales">Sales</option>
     <option value="support">Support</option>
@@ -86,14 +86,14 @@ const WorkSheet = () => {
   <label className="label">
     <span className="label-text  text-white font-bold">Hours</span>
   </label>
-  <input type="number" name='hours' placeholder="Hours" className="input input-bordered text-black" required />
+  <input type="number" name='hours' placeholder="Hours" className="input input-bordered text-black rounded-none" required />
 
 </div>
 <div className="form-control">
   <label className="label">
     <span className="label-text text-white font-bold">Choose the Date</span>
   </label>
-    <DatePicker placeholderText='pick the date' className="input input-bordered text-black" required
+    <DatePicker placeholderText='pick the date' className="input input-bordered text-black  rounded-none" required
       selected={selectedDate}
       onChange={handleDateChange}
       dateFormat="MMMM d, yyyy" 
@@ -102,14 +102,14 @@ const WorkSheet = () => {
 </div>
 <div className='form-control '>
   {/* <button type='submit' className='btn btn-ghost bg-gray-100 font-bold px-5 mt-6'>Add  </button> */}
-  <input className="btn  btn-ghost bg-gray-100 font-bold px-5 mt-6"  type="submit" value="Submit"/>
+  <input className="btn   bg-[#5F9FFF] font-bold px-5 mt-6 text-white border-none"  type="submit" value="Submit"/>
 </div>
 
 </form>
       </div>
       <div>
       <h2 className='text-3xl'>Total items : {items.length}</h2>
-      <h1>Table</h1>
+    
       <div>
       <table className="table mb-12 pb-6 w-full mt-5">
     {/* head */}
@@ -119,7 +119,7 @@ const WorkSheet = () => {
         <th>Task</th>
         <th> Hour</th>
         <th>Task Date</th>
-        <th>Action</th>
+       
 
       </tr>
     </thead>
@@ -132,7 +132,7 @@ const WorkSheet = () => {
             <td> {item.task}</td>
             <td> {item.hours}</td>
             <td> {item.selectedDate}</td>
-            <td><button>Action</button></td>
+          
             
         </tr>
         )

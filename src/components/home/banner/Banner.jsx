@@ -7,23 +7,21 @@ import Lottie from "lottie-react";
 import BannerAni from "../../../assets/Animation - Banner.json"
 
 
-
-
-
 const Banner = () => {
     return (
-       <div className="w-full pt-10 min-h-[70vh] bg-[#fcfcfc] dark:bg-gray-800 font-serif dark:text-gray-100">
+       <div className="w-11/12 mx-auto">
+		<div className="w-full pt-10 min-h-[70vh] bg-[#fcfcfc] dark:bg-gray-800 font-serif dark:text-gray-100">
          <Carousel  className="text-center autoPlay" >
         
         <div className="bg-[#fcfcfc] dark:bg-gray-800 dark:text-gray-100">
         
-	<div className="container flex flex-col justify-center mx-auto  lg:flex-row lg:justify-around">
+	<div className="container flex flex-col justify-center mx-auto  lg:flex-row-reverse lg:justify-around">
 		<div className="flex w-full lg:w-2/5 p-5 items-center justify-center ">
 			
         <Lottie animationData={BannerAni} loop={true} />
         </div>
 		<div className="w-full lg:w-2/5 flex flex-col justify-center text-center lg:text-left">
-			<h1 className="text-4xl font-bold  ">Empower Your  <br/>Team with
+			<h1 className="text-4xl font-bold  ">Empower Your Team with
 				<span className="dark:text-Blue-500 text-[#5f9fff]"> WebPulse Innovation</span>
 			</h1>
 			<p className="mt-6 mb-8 text-xl sm:mb-12">Streamline Workforce Management, Boost Productivity
@@ -39,13 +37,13 @@ const Banner = () => {
       
         <div className=" bg-[#fcfcfc] dark:bg-gray-800 dark:text-gray-100">
         
-	<div className="container flex flex-col justify-center mx-auto  lg:flex-row lg:justify-around">
+	<div className="container flex flex-col justify-center mx-auto  lg:flex-row-reverse lg:justify-around">
 		<div className="flex w-full lg:w-2/5 items-center justify-center ">
 			
         <img src={img2} alt=""  />
         </div>
 		<div className="w-full lg:w-2/5 flex flex-col justify-center text-center lg:text-left">
-			<h1 className="text-4xl font-bold   ">Unlock Your Team's <br/> Potential with 
+			<h1 className="text-4xl font-bold   ">Unlock Your Team's  Potential with 
 				<span className="dark:text-Blue-500 text-[#5f9fff]"> WebPulse Innovation</span>
 			</h1>
 			<p className="mt-6 mb-8 text-lg sm:mb-12">Elevating Performance, Engagement, and Collaboration 
@@ -62,13 +60,13 @@ const Banner = () => {
         
         <div className=" bg-[#fcfcfc] dark:bg-gray-800 dark:text-gray-100">
         
-	<div className="container flex flex-col justify-center mx-auto  lg:flex-row lg:justify-around">
+	<div className="container flex flex-col justify-center mx-auto  lg:flex-row-reverse lg:justify-around">
 		<div className="flex w-full lg:w-2/5 items-center justify-center ">
 			
         <img src={img3} alt=""  />
         </div>
 		<div className="w-full lg:w-2/5 flex flex-col justify-center text-center lg:text-left">
-			<h1 className="text-4xl font-bold  "> <span className="dark:text-Blue-500 text-[#5f9fff]">WebPulse Innovation: </span> <br /> Redefining Workforce Dynamics
+			<h1 className="text-4xl font-bold  "> <span className="dark:text-Blue-500 text-[#5f9fff]">WebPulse Innovation: </span>  Redefining Workforce Dynamics
 				
 			</h1>
 			<p className="mt-6 mb-8 text-lg sm:mb-12">Innovative HR Solutions for Today's Dynamic 
@@ -87,6 +85,7 @@ const Banner = () => {
 
     </Carousel>
        </div>
+	   </div>
     );
 };
 
