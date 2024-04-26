@@ -92,10 +92,10 @@ const VerifiedEmployee = () => {
             <td> {employee.designation}</td>
             {/* <td> <button onClick={() => handleMakeHr(employee)} className='btn text-white bg-purple-500'>Make HR</button></td> */}
             <td>
-              {employee.role == 'hr'? <h2 className=' font-bold ml-3 text-green-700'>HR</h2>: <button onClick={()=>handleMakeHr(employee)}  className="btn  p-3 py-1 my-2 text-white bg-purple-500">Make HR </button>}
+              {employee.role == 'hr'? <h2 className=' font-bold ml-3 text-green-700'>HR</h2>: <button onClick={()=>handleMakeHr(employee)}  className="btn  p-3 py-1 my-2 text-white bg-[#48753a] hover:bg-green-800">Make HR </button>}
                
               </td>
-            <td><button  onClick={() => handleDeleteUser(employee)} className='btn text-white bg-purple-500'>Fire</button></td>
+            <td><button  onClick={() => handleDeleteUser(employee)} className='btn text-white bg-[#fdc854] hover-bg-yellow-600'>Fire</button></td>
         </tr>
         )
      } 
