@@ -7,10 +7,9 @@ import { useQuery } from '@tanstack/react-query';
 import Swal from 'sweetalert2';
 
 const CheckOutForm = ({employee}) => {
-  //console.log('Employee:', employee);
+ 
   const salary = employee.salary;
-  // const name = employee.name;
- // console.log(salary);
+ 
     const [error,setError] =useState('');
     const [clientSecret, setClientSecret] =useState('');    const [selectedMonth, setSelectedMonth] = useState(null);
     const [transsactionId, setTranssactionId]=useState('')
@@ -29,7 +28,7 @@ const CheckOutForm = ({employee}) => {
     useEffect( ()=>{
      axiosSecure.post('/create-payment-intent',{salary:salary})
      .then(res => {
-      console.log(res.data.clientSecret);
+     
       setClientSecret(res.data.clientSecret);
   })
     },[axiosSecure,salary])
@@ -108,9 +107,9 @@ const CheckOutForm = ({employee}) => {
       
   }
     else{
-      console.log('payment intent', paymentIntent)
+      console.log('payment intent')
       if(paymentIntent.status === 'succeeded')
-      console.log('transsaction id', paymentIntent.id);
+     
     setTranssactionId(paymentIntent.id)
     }
    /////////////now save the payment in the database
@@ -124,7 +123,7 @@ const CheckOutForm = ({employee}) => {
     
    }
     const res= await axiosSecure.post('/payments', payment)
-    console.log(res.data)
+    
     if(res.data){
       Swal.fire({
         position: "top-end",

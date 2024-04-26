@@ -6,6 +6,7 @@ import {  Link, useLocation, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import Lottie from 'lottie-react';
 import Loginjson from "./Login.json";
+import GoogleLogin from './GoogleLogin';
 
 
 const Login = () => {
@@ -29,7 +30,7 @@ const Login = () => {
       const email=form.email.value;
       const password=form.password.value;
     
-    console.log(email,password);
+   
     
     signIn(email,password)
      
@@ -83,17 +84,17 @@ const Login = () => {
       </h1>
      
       <div className="flex flex-col md:flex-row items-center justify-center gap-4  mb-20 ">
-        <div className="w-1/3">
+        <div className="w-11/12 md:w-2/5 lg:w-1/3">
           <Lottie animationData={Loginjson} loop={true} />
         </div>
-        <div className="w-2/3 max-w-md p-8 space-y-3 rounded-xl ">
+        <div className="w-11/12 md:w-2/5 lg:w-2/3 max-w-md p-8 space-y-3 rounded-xl ">
           <form
             onSubmit={handleLogin} 
             action=""
             className="space-y-3"
           >
             <div className="space-y-1 text-sm">
-              <label  className="block text-[#5f9fff]">
+              <label  className="block text-[#5f9fff] ">
                 User Email
               </label>
               <input
@@ -102,7 +103,7 @@ const Login = () => {
                
                 id="email"
                 placeholder="User Email"
-                className="w-full px-4 py-3 rounded-md bg-[#dee4f2]"
+                className="w-full px-4 py-3 rounded-none bg-[#dee4f2]"
               />
             </div>
             <div className="space-y-1 text-sm">
@@ -115,7 +116,7 @@ const Login = () => {
                 id="password"
               
                 placeholder="Password"
-                className="w-full px-4 py-3 rounded-md bg-[#dee4f2]"
+                className="w-full px-4 py-3 rounded-none bg-[#dee4f2]"
               />
               <div className="flex justify-end text-xs text-[#5f9fff]">
                 
@@ -126,7 +127,7 @@ const Login = () => {
         {/* <span className="label-text">Captcha</span> */}
         <LoadCanvasTemplate className="border-2 border-blue-500" />
       </label>
-      <input type="text" onBlur={handleValidateCaptcha}  name="captcha" placeholder="captcha" className="w-full px-4 py-3 rounded-md bg-[#dee4f2]"/>
+      <input type="text" onBlur={handleValidateCaptcha}  name="captcha" placeholder="captcha" className="w-full px-4 py-3 rounded-none bg-[#dee4f2]"/>
  
 
 
@@ -149,21 +150,43 @@ const Login = () => {
             to="/register"
               rel="noopener noreferrer"
             
-              className="underline text-[#5f9fff]"
+              className=" text-[#5f9fff] pl-2 font-semibold"
             >
               Register
             </Link>
           </p>
 
-          
+             {/* social Login */}
+          {/* <div>
+
+          <div className="flex-1 h-px sm:w-16 dark:bg-gray-300"></div>
+		<p className="px-3 text-sm dark:text-gray-600 text-center ">Login with Google</p>
+		<div className="flex-1 h-px sm:w-16 dark:bg-gray-300"></div>
+
+	<div className="flex justify-center space-x-4">
+<GoogleLogin></GoogleLogin>
+    </div>
+
+          </div> */}
+
+
         </div>
+        <div></div>
+
+  
+    </div>
+    <div>
+
+      
+    </div>
+
       </div>
     </div>
     </div>
 
 
        
-      </div>
+    
       
     );
 };

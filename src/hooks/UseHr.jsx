@@ -11,7 +11,7 @@ const useHr = () => {
         enabled:!loading && !!localStorage.getItem('access-token'),
         queryFn: async () => {
             const res = await axiosSecure.get(`/users/ahr/${user.email}`);
-            console.log(res.data);
+          
             return res.data?.hr;
         }
     })
